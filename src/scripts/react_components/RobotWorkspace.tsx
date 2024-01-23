@@ -454,24 +454,23 @@ export class RobotWorkspace extends Component<robot_workspace_props, robot_works
 
         return (
             <div className={"HomeTab"}>
-                <div style={{ textAlign: "center" }}>
+                <div>
                     <h1>👋 Welcome to Motion Comparator</h1>
 
                     <br></br>
-                    <p> Motion Comparator helps roboticists </p> 
-                    <p> visualize 👀, understand 💡, compare 🔍, and communiate 💬 </p> 
-                    <p> robot motions. </p>
+                    <h3> Motion Comparator helps roboticists  
+                    visualize 👀, understand 💡, compare 🔍, and communiate 💬 
+                     robot motions. </h3> 
                     <br></br>
 
                     <div className="PopUpGroup" style={{justifyContent: "center", alignItems: "center"}}>
-                        <h3>Click on the help icon to get started</h3>
+                        <p>Click on the help icon </p>
                         <button id="open-popup" className="OpenPop" onClick={() => APP.setPopupHelpPage(PopupHelpPage.Home)}>
                             <FontAwesomeIcon className="Icon" icon={faQuestion} />
-                        </button>
+                        </button> 
+                        <p>to get started or explore the examples below </p>
                     </div>
 
-                    <br></br>
-                    <h3>Also explore the examples below </h3>
 
                     <div className={"ExampleImageGroup"}>
                         <img src="https://raw.githubusercontent.com/uwgraphics/MotionComparator-Examples/main/workspaces/panda_pick_and_place/panda_pick_and_place.png" className={"ExampleImage"} alt="Panda Pick and Place"/>

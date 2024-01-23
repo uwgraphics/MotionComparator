@@ -668,6 +668,7 @@ html, body {
                     }
 
                     .HomeTab {
+                        color: var(--panel-text-color);
                         text-align:center;
 
                         .ExampleImageGroup {
@@ -676,7 +677,7 @@ html, body {
                             // margin-right: auto;
                             // display: block;
                             position: relative;
-                            width: 33%;
+                            width: 22%;
                             padding: 1em;
                         }
   
@@ -871,65 +872,6 @@ html, body {
     
                         //     }
                         // }
-                    }
-                    .HomeTab {
-                        color: var(--panel-text-color);
-                        text-align:center;
-
-                        .ExampleImageGroup {
-                            display: inline-block;
-                            // margin-left: auto;
-                            // margin-right: auto;
-                            // display: block;
-                            position: relative;
-                            width: 35%;
-                            padding: 1em;
-                        }
-
-                        .ExampleImage {
-                            width: 100%;
-                            padding: 1em;
-                        }
-
-                        .ExampleImageOverlay {
-                            position: absolute;
-                            top: 0;
-                            bottom: 0;
-                            left: 0;
-                            right: 0;
-                            height: 100%;
-                            width: 100%;
-                            opacity: 0;
-                            font-size: 40px;
-                            transition: .5s ease;
-                            background-color: var(--panel-background-color);
-                            -webkit-transition: all 200ms ease-out;
-                            -moz-transition: all 200ms ease-out;
-                            -o-transition: all 200ms ease-out;
-                            -ms-transition: all 200ms ease-out;
-                            transition: all 200ms ease-out;
-                            cursor: pointer;
-                        }
-                        
-                        .ExampleImageGroup:hover .ExampleImageOverlay {
-                            opacity: 0.9;
-                        }
-
-                        .ExampleImageOverlayText {
-                            color: --var(panel-text-color);
-                            font-size: 2rem;
-                            position: absolute;
-                            top: 50%;
-                            left: 50%;
-                            -webkit-transform: translate(-50%, -50%);
-                            -ms-transform: translate(-50%, -50%);
-                            transform: translate(-50%, -50%);
-                            text-align: center;
-                        }
-                        
-                        .GithubIcon {
-                            width: 5rem;
-                        }
                     }
                     .SelectionPanel{
                         width: 100%;
