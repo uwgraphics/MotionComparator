@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/MotionComparator/static/css/main.8267b3d0.css",
+    "main.js": "/MotionComparator/static/js/main.a7657620.js",
+    "static/js/787.9064070b.chunk.js": "/MotionComparator/static/js/787.9064070b.chunk.js",
+    "index.html": "/MotionComparator/index.html",
+    "main.8267b3d0.css.map": "/MotionComparator/static/css/main.8267b3d0.css.map",
+    "main.a7657620.js.map": "/MotionComparator/static/js/main.a7657620.js.map",
+    "787.9064070b.chunk.js.map": "/MotionComparator/static/js/787.9064070b.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.8267b3d0.css",
+    "static/js/main.a7657620.js"
+  ]
+}
