@@ -3,60 +3,6 @@ import { APP } from "../constants";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 
-// GIFs
-import UmapOption_CreateUmap from "../../assets/UmapOption_CreateUmap.gif";
-import UmapOption_ChangeColor from "../../assets/UmapOption_ChangeColor.gif";
-import UmapOption_ChangeParams from "../../assets/UmapOption_ChangeParams.gif";
-import UmapOption_ChangeLineWidth from "../../assets/UmapOption_ChangeLineWidth.gif";
-import Umap_AddLine from "../../assets/Umap_AddLine.gif";
-import Umap_OpenLegend from "../../assets/Umap_OpenLegend.gif";
-import QScene_ChangeSettings from "../../assets/QScene_ChangeSettings.gif";
-import QScene_CreateQScene from "../../assets/QScene_CreateQScene.gif";
-
-import DragAndDropToOpenA3DScene from "../../assets/DragAndDropToOpenA3DScene.gif"
-import AddGhostToScene from "../../assets/AddGhostToScene.gif"
-import AddTraceToScene from "../../assets/AddTraceToScene.gif"
-import DeleteObjectFromScene from "../../assets/DeleteObjectFromScene.gif";
-import CreationOfNewEmptyScene from "../../assets/CreationOfNewEmptyScene.gif";
-import CloningScene from "../../assets/CloningScene.gif";
-
-import CreatingEmptyGraphs from "../../assets/CreatingEmptyGraphs.gif";
-import ChangingThePropertiesOfAGraph from "../../assets/ChangingThePropertiesOfAGraph.gif";
-
-import AddJointValueToGraph from "../../assets/AddJointValueToGraph.gif";
-import DragAndDropLegendOfGraph from "../../assets/DragAndDropLegendOfGraph.gif";
-
-import PictureOfDifferenceGraphWithDifferences from "../../assets/PictureOfDifferenceGraphWithDifferences.png"
-import PictureOfDifferenceGraphWithNoDifferences from "../../assets/PictureOfDifferenceGraphWithNoDifferences.png"
-
-import CreationAndPopulationOfDiffGraph from "../../assets/CreationAndPopulationOfDiffGraph.gif"
-import DragAndDropDifferenceGraphLegend from "../../assets/DragAndDropDifferenceGraphLegend.gif"
-
-import ClickingOnSceneToSelectIt from "../../assets/ClickingOnSceneToSelectIt.gif"
-import SceneOptionsPanelScreenshot from "../../assets/SceneOptionsPanelScreenshot.png"
-
-import SelectingRobotByClickingOnIt from "../../assets/SelectingRobotByClickingOnIt.gif"
-import SelectingRobotViaSelectionPanel from "../../assets/SelectingRobotViaSelectionPanel.gif"
-import RobotOptionsPanelScreenshot from "../../assets/RobotOptionsPanelScreenshot.png"
-
-import TimeBarBeingScrubbed from "../../assets/TimeBarBeingScrubbed.gif"
-import TimeBarBeingPlayedPausedReset from "../../assets/TimeBarBeingPlayedPausedReset.gif"
-
-import ColoredTimeBarInUse from "../../assets/ColoredTimeBarInUse.gif"
-import DoubleTimeBarPlaying from "../../assets/DoubleTimeBarPlaying.gif"
-import DoubleTimeBarBeingScrubbed from "../../assets/DoubleTimeBarBeingScrubbed.gif"
-
-import LooadingInExampleRobot from "../../assets/LooadingInExampleRobot.gif"
-import SceneLegendAndDeletionOfTraces from "../../assets/SceneLegendAndDeletionOfTraces.gif"
-import SceneOptionsEditingScene from "../../assets/SceneOptionsEditingScene.gif"
-
-import RobotOptionsRobotEditing from "../../assets/RobotOptionsRobotEditing.gif"
-
-
-import LoadAndSavePanelScreenshot from "../../assets/LoadAndSavePanelScreenshot.png"
-import LS_Workspace from "../../assets/LS_Workspace.gif"
-
-
 /**
  * An enum denoting what page of the popups should currently be shown.
  */
@@ -246,7 +192,7 @@ function popupHelpPageContent(params:PopupHelpPageParams): ReactElement | null {
                     You can open a scene by clicking and dragging it into the
                     current workspace.
                 </p>
-                <img src={DragAndDropToOpenA3DScene} alt={"A gif showing how to open a 3D scene"} />
+                <img src={"https://raw.githubusercontent.com/uwgraphics/MotionComparator-Examples/main/gifs/DragAndDropToOpenA3DScene.gif"} alt={"A gif showing how to open a 3D scene"} />
 
                 <h3> Adding a ghost robot to a 3D scene </h3>
                 <p>
@@ -258,7 +204,7 @@ function popupHelpPageContent(params:PopupHelpPageParams): ReactElement | null {
                     dragging the object's name into the scene you want its ghost
                     to appear in.
                 </p>
-                <img src={AddGhostToScene} alt={"A gif showing how to add a ghost robot"} />
+                <img src={"https://raw.githubusercontent.com/uwgraphics/MotionComparator-Examples/main/gifs/AddGhostToScene.gif"} alt={"A gif showing how to add a ghost robot"} />
 
                 <h3> Adding the Trace of a Joint </h3>
                 <p>
@@ -271,20 +217,20 @@ function popupHelpPageContent(params:PopupHelpPageParams): ReactElement | null {
                     dragging the joint's name into the scene you would like the
                     trace to appear in.
                 </p>
-                <img src={AddTraceToScene} alt={"a gif showing a joint's trace being added to a scene"} />
+                <img src={"https://raw.githubusercontent.com/uwgraphics/MotionComparator-Examples/main/gifs/AddTraceToScene.gif"} alt={"a gif showing a joint's trace being added to a scene"} />
 
                 <h3> Deleting an Object </h3>
                 <p>
                     An object can be deleted from a scene by clicking the trash
                     icon next to it in the selection hierarchy.
                 </p>
-                <img src={DeleteObjectFromScene} alt={"a gif showing the deletion of an object"} />
+                <img src={"https://raw.githubusercontent.com/uwgraphics/MotionComparator-Examples/main/gifs/DeleteObjectFromScene.gif"} alt={"a gif showing the deletion of an object"} />
 
                 <h3> Creating a new Scene </h3>
                 <p>
                     A new, empty scene can be created by clicking the "New Scene" button.
                 </p>
-                <img src={CreationOfNewEmptyScene} alt={"a gif showing the creation of a scene"} />
+                <img src={"https://raw.githubusercontent.com/uwgraphics/MotionComparator-Examples/main/gifs/CreationOfNewEmptyScene.gif"} alt={"a gif showing the creation of a scene"} />
 
                 <p>
                     To learn about how to add objects/animations to the newly
@@ -296,7 +242,7 @@ function popupHelpPageContent(params:PopupHelpPageParams): ReactElement | null {
                     A scene can be cloned by clicking on the scene you desire to
                     clone and then clicking the "Clone Scene" button.
                 </p>
-                <img src={CloningScene} alt={"a gif of a scene being cloned"} />
+                <img src={"https://raw.githubusercontent.com/uwgraphics/MotionComparator-Examples/main/gifs/CloningScene.gif"} alt={"a gif of a scene being cloned"} />
             </div>
         </div>;
     } else if (params.page === PopupHelpPage.GraphOptionPanel) { 
@@ -321,14 +267,14 @@ function popupHelpPageContent(params:PopupHelpPageParams): ReactElement | null {
                     To create a new {goTo(PopupHelpPage.GraphPanel)} or {goTo(PopupHelpPage.DifferenceGraphPanel)} panel,
                     click and drag the text that says "New Graph" or "Difference Graph" into the workspace.
                 </p>
-                <img src={CreatingEmptyGraphs} alt={"gif of a graph panel being clicked and dragged into the workspace"} />
+                <img src={"https://raw.githubusercontent.com/uwgraphics/MotionComparator-Examples/main/gifs/CreatingEmptyGraphs.gif"} alt={"gif of a graph panel being clicked and dragged into the workspace"} />
                 <p>
                     To edit the panel after you have created it, first select
                     the graph panel you want to edit by clicking on it. Then,
                     you can use the "property" dropbox of the {goTo(PopupHelpPage.GraphOptionPanel)} panel
                     to edit what aspect of each joint/object is being graphed.
                 </p>
-                <img src={ChangingThePropertiesOfAGraph} alt={"gif of person changing the properties of a graph"} />
+                <img src={"https://raw.githubusercontent.com/uwgraphics/MotionComparator-Examples/main/gifs/ChangingThePropertiesOfAGraph.gif"} alt={"gif of person changing the properties of a graph"} />
             </div>
         </div>;
     } else if (params.page === PopupHelpPage.GraphPanel) {
@@ -352,7 +298,7 @@ function popupHelpPageContent(params:PopupHelpPageParams): ReactElement | null {
                     {goTo(PopupHelpPage.SelectionPanel)} panel and into the
                     graph panel.
                 </p>
-                <img src={AddJointValueToGraph} alt={"A gif showing an object's joint being clicked and dragged into a graph panel"} />
+                <img src={"https://raw.githubusercontent.com/uwgraphics/MotionComparator-Examples/main/gifs/AddJointValueToGraph.gif"} alt={"A gif showing an object's joint being clicked and dragged into a graph panel"} />
                 <p>
                     This can be done for as many joints as you wish.
                 </p>
@@ -373,7 +319,7 @@ function popupHelpPageContent(params:PopupHelpPageParams): ReactElement | null {
                     says "Legend" into the workspace, and a
                     {goTo(PopupHelpPage.LegendPanel)} will appear.
                 </p>
-                <img src={DragAndDropLegendOfGraph} alt={"a gif to show how to click and drag to open a legend"} />
+                <img src={"https://raw.githubusercontent.com/uwgraphics/MotionComparator-Examples/main/gifs/DragAndDropLegendOfGraph.gif"} alt={"a gif to show how to click and drag to open a legend"} />
             </div>
         </div>;
     } else if (params.page === PopupHelpPage.DifferenceGraphPanel) { 
@@ -390,7 +336,7 @@ function popupHelpPageContent(params:PopupHelpPageParams): ReactElement | null {
                     positions for two robots over the course of their
                     animations.
                 </p>
-                <img src={PictureOfDifferenceGraphWithDifferences} alt={"picture of difference graph"} />
+                <img src={"https://raw.githubusercontent.com/uwgraphics/MotionComparator-Examples/main/gifs/PictureOfDifferenceGraphWithDifferences.gif"} alt={"picture of difference graph"} />
                 <p>
                     If we time warp the two scenes and then graph them again,
                     you can now see that their end effectors follow the exact
@@ -398,7 +344,7 @@ function popupHelpPageContent(params:PopupHelpPageParams): ReactElement | null {
                     effectors are now 0 at every time step), they just do so at
                     different times.
                 </p>
-                <img src={PictureOfDifferenceGraphWithNoDifferences} alt={"picture of difference graph where end effector differences are now 0 at every time step"} />
+                <img src={"https://raw.githubusercontent.com/uwgraphics/MotionComparator-Examples/main/gifs/PictureOfDifferenceGraphWithNoDifferences.gif"} alt={"picture of difference graph where end effector differences are now 0 at every time step"} />
 
                 <h3> Graphing Elements </h3>
                 <p>
@@ -411,14 +357,14 @@ function popupHelpPageContent(params:PopupHelpPageParams): ReactElement | null {
                     motions by dragging and dropping said elements into the
                     difference graph.
                 </p>
-                <img src={CreationAndPopulationOfDiffGraph} alt={"gif of dragging and dropping said elements into the difference graph"} />
+                <img src={"https://raw.githubusercontent.com/uwgraphics/MotionComparator-Examples/main/gifs/CreationAndPopulationOfDiffGraph.gif"} alt={"gif of dragging and dropping said elements into the difference graph"} />
 
                 <h3> Graph Legend </h3>
                 <p>
                     You can open a legend for the graph by dragging and dropping
                     the "Legend" text into the workspace.
                 </p>
-                <img src={DragAndDropDifferenceGraphLegend} alt={"gif of dragging and dropping a legend for the graph into the workspace"} />
+                <img src={"https://raw.githubusercontent.com/uwgraphics/MotionComparator-Examples/main/gifs/DragAndDropDifferenceGraphLegend.gif"} alt={"gif of dragging and dropping a legend for the graph into the workspace"} />
 
                 <h3> Editing the Graph </h3>
                 <p>
@@ -438,17 +384,17 @@ function popupHelpPageContent(params:PopupHelpPageParams): ReactElement | null {
                     You can drag-and-drop the "New UMAP Graph" button to create
                     a new UMAP Graph Panel.
                 </p>
-                <img src={UmapOption_CreateUmap}/>
+                <img src={"https://raw.githubusercontent.com/uwgraphics/MotionComparator-Examples/main/gifs/UmapOption_CreateUmap.gif"}/>
 
                 <h3> Control the settings of the selected UMAP Graph Panel </h3>
                 <ul>
                     <li>type the name in the text input field next to "Name" and press "enter" key to change the name of the UMAP Graph</li>
                     <li>click on "Background Color" or "Axis Color" and then click on the color map to change the background color and the axis color (border color)</li>
-                    <img src={UmapOption_ChangeColor}/>
+                    <img src={"https://raw.githubusercontent.com/uwgraphics/MotionComparator-Examples/main/gifs/UmapOption_ChangeColor.gif"}/>
                     <li>drag the slide bar to change the line width of the curves shown in the graph</li>
-                    <img src={UmapOption_ChangeLineWidth}/>
+                    <img src={"https://raw.githubusercontent.com/uwgraphics/MotionComparator-Examples/main/gifs/UmapOption_ChangeLineWidth.gif"}/>
                     <li>drag the slide bar to change the three parameters (number of neighbors, minimum distance, and spread) in order to create a UMAP</li>
-                    <img src={UmapOption_ChangeParams}/>
+                    <img src={"https://raw.githubusercontent.com/uwgraphics/MotionComparator-Examples/main/gifs/UmapOption_ChangeParams.gif"}/>
                 </ul>
             </div>
         </div>;
@@ -466,11 +412,11 @@ function popupHelpPageContent(params:PopupHelpPageParams): ReactElement | null {
                     Normally it takes a few seconds to calculate and
                     display the line.
                 </p>
-                <img src={Umap_AddLine}/>
+                <img src={"https://raw.githubusercontent.com/uwgraphics/MotionComparator-Examples/main/gifs/Umap_AddLine.gif"}/>
 
                 <h3> Open a legend </h3>
                 <p>Click and drag the legend button to create a legend panel for this UMAP Graph Panel</p>
-                <img src={Umap_OpenLegend}/>
+                <img src={"https://raw.githubusercontent.com/uwgraphics/MotionComparator-Examples/main/gifs/Umap_OpenLegend.gif"}/>
             </div>
         </div>;
     } else if (params.page === PopupHelpPage.SceneOptionPanel) { 
@@ -488,7 +434,7 @@ function popupHelpPageContent(params:PopupHelpPageParams): ReactElement | null {
                     of it that you clicked is outlined. If possible, the {goTo(PopupHelpPage.SceneOptionPanel)} panel 
                     will also be switched to automatically.
                 </p>
-                <img src={ClickingOnSceneToSelectIt} alt={"gif of selecting a scene"} />
+                <img src={"https://raw.githubusercontent.com/uwgraphics/MotionComparator-Examples/main/gifs/ClickingOnSceneToSelectIt.gif"} alt={"gif of selecting a scene"} />
 
                 <h3> Editing the Scene </h3>
                 <p>
@@ -500,7 +446,7 @@ function popupHelpPageContent(params:PopupHelpPageParams): ReactElement | null {
                     edit the sizes of traces, time warp the scene relative to
                     another scene, and replace animations in the scene.
                 </p>
-                <img src={SceneOptionsEditingScene} alt={"gif of editing the scene using the \"Scene Options\" panel"} />
+                <img src={"https://raw.githubusercontent.com/uwgraphics/MotionComparator-Examples/main/gifs/SceneOptionsEditingScene.gif"} alt={"gif of editing the scene using the \"Scene Options\" panel"} />
 
                 <h3> The Scene Legend </h3>
                 <p>
@@ -511,7 +457,7 @@ function popupHelpPageContent(params:PopupHelpPageParams): ReactElement | null {
                     You can open the current scene's legend by clicking and
                     dragging the "Legend" button into the workspace.
                 </p>
-                <img src={SceneLegendAndDeletionOfTraces} alt={"gif of a scene's legend being created and then used to delete the traces in the scene"} />
+                <img src={"https://raw.githubusercontent.com/uwgraphics/MotionComparator-Examples/main/gifs/SceneLegendAndDeletionOfTraces.gif"} alt={"gif of a scene's legend being created and then used to delete the traces in the scene"} />
             </div>
         </div>;
     } else if (params.page === PopupHelpPage.LoadAndSavePanel) {
@@ -531,7 +477,7 @@ function popupHelpPageContent(params:PopupHelpPageParams): ReactElement | null {
                     You can also download the current workspace by clicking the
                     "Download" button.
                 </p>
-                <img src={LS_Workspace} alt="gif of loading and saving the workspace"/>
+                <img src={"https://raw.githubusercontent.com/uwgraphics/MotionComparator-Examples/main/gifs/LS_Workspace.gif"} alt="gif of loading and saving the workspace"/>
 
                 <p>
                     If you would like to load a robot or object into the current
@@ -540,7 +486,7 @@ function popupHelpPageContent(params:PopupHelpPageParams): ReactElement | null {
                     one from a URL. Uploaded robots and/or objects can be in
                     either the ".glb" or ".urdf" format.
                 </p>
-                <img src={LooadingInExampleRobot} alt="gif of loading an example robot into the current scene"/>
+                <img src={"https://raw.githubusercontent.com/uwgraphics/MotionComparator-Examples/main/gifs/LooadingInExampleRobot.gif"} alt="gif of loading an example robot into the current scene"/>
 
                 <p>
                     Once you have objects loaded into the current scene, you can
@@ -605,7 +551,7 @@ function popupHelpPageContent(params:PopupHelpPageParams): ReactElement | null {
                     possible, the {goTo(PopupHelpPage.RobotOptionPanel)} panel
                     will also be switched to upon selection.
                 </p>
-                <img src={SelectingRobotByClickingOnIt} alt="gif of a robot being selected by clicking on it" />
+                <img src={"https://raw.githubusercontent.com/uwgraphics/MotionComparator-Examples/main/gifs/SelectingRobotByClickingOnIt.gif"} alt="gif of a robot being selected by clicking on it" />
                 <p>
                     For the purposes of this application, a robot is simply an
                     object. The object may or may not have joints, but you can
@@ -613,7 +559,7 @@ function popupHelpPageContent(params:PopupHelpPageParams): ReactElement | null {
                     a robot you can use the {goTo(PopupHelpPage.SelectionPanel)} panel 
                     and select what its help page refers to as an object.
                 </p>
-                <img src={SelectingRobotViaSelectionPanel} alt="gif of selection panel being used to select the robot" />
+                <img src={"https://raw.githubusercontent.com/uwgraphics/MotionComparator-Examples/main/gifs/SelectingRobotViaSelectionPanel.gif"} alt="gif of selection panel being used to select the robot" />
 
                 <h3> Editing a Robot </h3>
                 <p>
@@ -625,7 +571,7 @@ function popupHelpPageContent(params:PopupHelpPageParams): ReactElement | null {
                     allows you to view any animation data that is animating the
                     robot.
                 </p>
-                <img src={RobotOptionsRobotEditing} alt="gif of a robot being edited using the Robot Options panel" />
+                <img src={"https://raw.githubusercontent.com/uwgraphics/MotionComparator-Examples/main/gifs/RobotOptionsRobotEditing.gif"} alt="gif of a robot being edited using the Robot Options panel" />
             </div>
         </div>;
     } else if (params.page === PopupHelpPage.QSceneOptionPanel) {
@@ -640,7 +586,7 @@ function popupHelpPageContent(params:PopupHelpPageParams): ReactElement | null {
                     You can drag-and-drop the "New Quaternion Space" button to create
                     a new Quaternion Space Scene Panel.
                 </p>
-                <img src={QScene_CreateQScene} />
+                <img src={"https://raw.githubusercontent.com/uwgraphics/MotionComparator-Examples/main/gifs/QScene_CreateQScene.gif"} />
 
                 <h3> Selecting a Quaternion Space Scene to Edit </h3>
                 <p>
@@ -658,7 +604,7 @@ function popupHelpPageContent(params:PopupHelpPageParams): ReactElement | null {
                     They allow you to show/hide the world frame, change the opacity and color of the longitude
                     and latitude lines displayed on the sphere, and change the background color of the scene
                 </p>
-                <img src={QScene_ChangeSettings}/>
+                <img src={"https://raw.githubusercontent.com/uwgraphics/MotionComparator-Examples/main/gifs/QScene_ChangeSettings.gif"}/>
             </div>
         </div>;
     } else if (params.page === PopupHelpPage.Qscene) {
@@ -687,13 +633,13 @@ function popupHelpPageContent(params:PopupHelpPageParams): ReactElement | null {
                     to define both the start and end time of all animations as well
                     as scrub through them.
                 </p>
-                <img src={TimeBarBeingScrubbed} alt="gif of scrubbing the time bar" />
+                <img src={"https://raw.githubusercontent.com/uwgraphics/MotionComparator-Examples/main/gifs/TimeBarBeingScrubbed.gif"} alt="gif of scrubbing the time bar" />
                 <p>
                     In addition, if you would like to play, pause, or restart
                     the animaions, you can do so using the buttons on this
                     panel.
                 </p>
-                <img src={TimeBarBeingPlayedPausedReset} alt="gif of playing, stopping, and resetting the animations via the time bar" />
+                <img src={"https://raw.githubusercontent.com/uwgraphics/MotionComparator-Examples/main/gifs/TimeBarBeingPlayedPausedReset.gif"} alt="gif of playing, stopping, and resetting the animations via the time bar" />
             </div>
         </div>;
     } else if (params.page === PopupHelpPage.WarpedTimeBarPanel) {
@@ -718,7 +664,7 @@ function popupHelpPageContent(params:PopupHelpPageParams): ReactElement | null {
                     Blue means that it was slowed and red means that it was sped up.
                     White means that it was unchanged.
                 </p>
-                <img src={ColoredTimeBarInUse} alt="gif of playing, stopping, and resetting the animations via the colored time bar" />
+                <img src={"https://raw.githubusercontent.com/uwgraphics/MotionComparator-Examples/main/gifs/ColoredTimeBarInUse.gif"} alt="gif of playing, stopping, and resetting the animations via the colored time bar" />
 
                 <h3> Double Time Bar </h3>
                 <p>
@@ -733,13 +679,13 @@ function popupHelpPageContent(params:PopupHelpPageParams): ReactElement | null {
                     useful), but it is enough to get a good idea of what the
                     mapping looks like.
                 </p>
-                <img src={DoubleTimeBarPlaying} alt="gif of the double time bars while the animations are playing" />
+                <img src={"https://raw.githubusercontent.com/uwgraphics/MotionComparator-Examples/main/gifs/DoubleTimeBarPlaying.gif"} alt="gif of the double time bars while the animations are playing" />
                 <p>
                     Also of note is the fact that both time bars are
                     accurate for their respective scenes so you can scrub
                     around the target scene or base scene as you desire.
                 </p>
-                <img src={DoubleTimeBarBeingScrubbed} alt="gif of the base and target scene time bars being scrubbed" />
+                <img src={"https://raw.githubusercontent.com/uwgraphics/MotionComparator-Examples/main/gifs/DoubleTimeBarBeingScrubbed.gif"} alt="gif of the base and target scene time bars being scrubbed" />
             </div>
         </div>;
     } else if (params.page === PopupHelpPage.TimeWarping) {
