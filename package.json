@@ -1,7 +1,7 @@
 {
   "name": "MotionComparator",
   "version": "0.80.0 beta",
-  "homepage": "https://motion-comparator.github.io/MotionComparator",
+  "homepage": "https://uwgraphics.github.io/MotionComparator",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.11.1",

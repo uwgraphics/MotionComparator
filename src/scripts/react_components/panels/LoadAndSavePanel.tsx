@@ -26,14 +26,14 @@ import Select from 'react-select'
 import { selectStyles } from "./SceneOptionPanel";
 
 let exampleRobotURLs = [
-    {"robot_name": "sawyer", "url": "https://raw.githubusercontent.com/motion-comparator/examples/main/robots/sawyer/urdf/sawyer_gripper.urdf"},
-    {"robot_name": "fetch", "url": "https://raw.githubusercontent.com/motion-comparator/examples/main/robots/fetch/urdf/fetch.urdf"},
-    {"robot_name": "mico", "url": "https://raw.githubusercontent.com/motion-comparator/examples/main/robots/kinova/urdf/mico.urdf"},
-    {"robot_name": "ur5", "url": "https://raw.githubusercontent.com/motion-comparator/examples/main/robots/ur5/urdf/ur5_gripper.urdf"},
-    {"robot_name": "spot arm", "url" : "https://raw.githubusercontent.com/motion-comparator/examples/main/robots/spot_arm/urdf/spot_arm.urdf"},
-    {"robot_name": "panda", "url": "https://raw.githubusercontent.com/motion-comparator/examples/main/robots/panda/urdf/panda.urdf"},
-    {"robot_name": "bottle", "url": "https://raw.githubusercontent.com/motion-comparator/examples/main/objects/glass_bottle.glb"},
-    {"robot_name": "table", "url": "https://raw.githubusercontent.com/motion-comparator/examples/main/objects/side_table.glb"},
+    {"robot_name": "sawyer", "url": "https://raw.githubusercontent.com/uwgraphics/MotionComparator-Examples/main/robots/sawyer/urdf/sawyer_gripper.urdf"},
+    {"robot_name": "fetch", "url": "https://raw.githubusercontent.com/uwgraphics/MotionComparator-Examples/main/robots/fetch/urdf/fetch.urdf"},
+    {"robot_name": "mico", "url": "https://raw.githubusercontent.com/uwgraphics/MotionComparator-Examples/main/robots/kinova/urdf/mico.urdf"},
+    {"robot_name": "ur5", "url": "https://raw.githubusercontent.com/uwgraphics/MotionComparator-Examples/main/robots/ur5/urdf/ur5_gripper.urdf"},
+    {"robot_name": "spot arm", "url" : "https://raw.githubusercontent.com/uwgraphics/MotionComparator-Examples/main/robots/spot_arm/urdf/spot_arm.urdf"},
+    {"robot_name": "panda", "url": "https://raw.githubusercontent.com/uwgraphics/MotionComparator-Examples/main/robots/panda/urdf/panda.urdf"},
+    {"robot_name": "bottle", "url": "https://raw.githubusercontent.com/uwgraphics/MotionComparator-Examples/main/objects/glass_bottle.glb"},
+    {"robot_name": "table", "url": "https://raw.githubusercontent.com/uwgraphics/MotionComparator-Examples/main/objects/side_table.glb"},
     {"robot_name": "end-effector targets", "url": "EETarget"}
 ]
 
