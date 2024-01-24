@@ -909,10 +909,8 @@ export class SceneOptionsPanel extends Component<scene_options_panel_props, scen
                         </div>
                       </div>
                       
-                      <div style={{marginBottom: "5px", display: "flex", alignItems: "center", justifyContent: "center"}}>
-                        {!isTimeWarp && <ClickButton buttonValue="Confirm" onClick={this.onConfirm.bind(this)}/>}
-                      </div>
                       <div className={"ButtonsContainer"} style={{display: "flex", gap: "1rem"}}>
+                        {!isTimeWarp && <ClickButton buttonValue="Confirm" onClick={this.onConfirm.bind(this)}/>}
                         <ClickButton buttonValue="Warped Time Bar" onClick={this.onTimeWarpBar.bind(this)}/>
                         <DragButton
                           className={"TimeWarp"}
