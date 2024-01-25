@@ -836,6 +836,13 @@ html, body {
                                 margin-left: 0.5rem;
                             }
                         }
+
+                        .Select-JointMotion, .Select-Transformation{
+                            > * {
+                                display: block;
+                                margin-bottom: 0.5rem;
+                            }
+                        }
                         // .RobotSelectorPanel {
                         //     color: var(--panel-text-color);
                         //     > div {

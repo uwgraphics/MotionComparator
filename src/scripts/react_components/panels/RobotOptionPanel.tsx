@@ -461,7 +461,7 @@ export class RobotOptionsPanel extends Component<robot_options_panel_props, robo
                       </div>
                       <div className="top-line">
                         <div className={"Select-JointMotion"}>
-                          <label>Available Joint Motions </label>
+                          <label> Available Joint Motions </label>
 
                           <div className={"Select-container"}>
                             <Select
@@ -472,8 +472,6 @@ export class RobotOptionsPanel extends Component<robot_options_panel_props, robo
                               styles={selectStyles}
                             />
                           </div>
-                          <label>  </label>
-
                           <input type="button" value="Confirm" onClick={this.onSelectJointMotion.bind(this)} />
                         </div>
                         <div className={"Select-Transformation"}>
@@ -488,8 +486,6 @@ export class RobotOptionsPanel extends Component<robot_options_panel_props, robo
                               styles={selectStyles}
                             />
                           </div>
-                          <label>  </label>
-
                           <input type="button" value="Confirm" onClick={this.onSelectTF.bind(this)} />
                         </div>
                       </div>
