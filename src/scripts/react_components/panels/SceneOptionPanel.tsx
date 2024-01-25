@@ -30,7 +30,7 @@ import { Animation } from "../../Animation";
 import { CamerasPanel } from "./CamerasPanel";
 import { LabeledTextInput } from "../LabeledTextInput";
 import T from "../../true_three";
-import { HexColorPicker } from "react-colorful";
+import { HexColorPicker, HexColorInput } from "react-colorful";
 import { LabeledCheckBox } from "../LabeledCheckBox";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faQuestion } from '@fortawesome/free-solid-svg-icons';
@@ -834,9 +834,17 @@ export class SceneOptionsPanel extends Component<scene_options_panel_props, scen
                             </AccordionItemButton>
                           </AccordionItemHeading>
                           <AccordionItemPanel>
-                          <HexColorPicker
-                          color={robotScene.backgroundColor()}
-                          onChange={(newColor) => this.onColorMapChange(newColor)} />
+                            <div className="ColorPicker">
+                              <HexColorPicker
+                                color={robotScene.backgroundColor()}
+                                onChange={(newColor) => this.onColorMapChange(newColor)} />
+                              <div className="ColorInput">
+                                <label>Type your color in a format like 777777</label>
+                                <HexColorInput
+                                  color={robotScene.backgroundColor()}
+                                  onChange={(newColor) => this.onColorMapChange(newColor)} />
+                              </div>
+                            </div>
                           </AccordionItemPanel>
                         </AccordionItem>
                       </Accordion>

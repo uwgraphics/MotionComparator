@@ -8,7 +8,7 @@ import { DragButton } from "../DragButton";
 import { LabeledTextInput } from "../LabeledTextInput";
 import { QuaternionSpaceScene } from "../../scene/QuaternionSpaceScene";
 import { LabeledCheckBox } from "../LabeledCheckBox";
-import { HexColorPicker } from "react-colorful";
+import { HexColorPicker, HexColorInput } from "react-colorful";
 import {
   Accordion,
   AccordionItem,
@@ -159,9 +159,17 @@ export class QuaternionSpaceOptionPanel extends Component<quaternion_panel_props
               </AccordionItemButton>
             </AccordionItemHeading>
             <AccordionItemPanel>
-              <HexColorPicker
-                color={currQuaternionSpaceScene?.backgroundColor()}
-                onChange={(newColor) => this.onBackgroundColorChange(newColor)} />
+              <div className="ColorPicker">
+                <HexColorPicker
+                  color={currQuaternionSpaceScene?.backgroundColor()}
+                  onChange={(newColor) => this.onBackgroundColorChange(newColor)} />
+                <div className="ColorInput">
+                  <label>Type your color in a format like 777777</label>
+                  <HexColorInput
+                    color={currQuaternionSpaceScene?.backgroundColor()}
+                    onChange={(newColor) => this.onBackgroundColorChange(newColor)} />
+                </div>
+              </div>
             </AccordionItemPanel>
           </AccordionItem>
         </Accordion>
@@ -174,9 +182,17 @@ export class QuaternionSpaceOptionPanel extends Component<quaternion_panel_props
               </AccordionItemButton>
             </AccordionItemHeading>
             <AccordionItemPanel>
-              <HexColorPicker
-                color={currQuaternionSpaceScene?.lineGroupColor()}
-                onChange={(newColor) => this.onLineGroupColorChange(newColor)} />
+              <div className="ColorPicker">
+                <HexColorPicker
+                  color={currQuaternionSpaceScene?.lineGroupColor()}
+                  onChange={(newColor) => this.onLineGroupColorChange(newColor)} />
+                <div className="ColorInput">
+                  <label>Type your color in a format like 777777</label>
+                  <HexColorInput
+                    color={currQuaternionSpaceScene?.lineGroupColor()}
+                    onChange={(newColor) => this.onLineGroupColorChange(newColor)} />
+                </div>
+              </div>
             </AccordionItemPanel>
           </AccordionItem>
         </Accordion>

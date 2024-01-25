@@ -141,7 +141,6 @@ html, body {
                 font-size: 15px;
                 color:var(--panel-text-color);
                 background-color: var(--panel-background-color);
-                border: none;
                 border: 1px solid #00000000;
             }
         
@@ -579,11 +578,6 @@ html, body {
                     }
 
                     .LabeledTextInput{
-                        input[type="text"]{
-                            width: 10em;
-                            color:var(--panel-text-color);
-                            background-color: var(--panel-background-color);
-                        }
                         * + * {
                             margin-left: 0.5rem;
                         }
@@ -823,7 +817,31 @@ html, body {
                                 left: 120px;
                             }
                         }
+
+                        input{
+                            font-size: 15px;
+                            color:var(--panel-text-color);
+                            background-color: var(--panel-background-color);
+                            border: 1px solid #00000000;
+                        }
+                    
+                        input:hover {
+                            border: 1px solid var(--panel-text-color);
+                        }
                     }
+
+                    .ColorPicker{
+                        display: flex;
+                        gap: 5px;
+                        .ColorInput{
+                            width: 40%;
+                            > *{
+                                display: block; 
+                                margin-bottom: 0.5rem;
+                            }
+                        }
+                    }
+
                     .RobotOptionPanel{
                         > * {
                             margin-bottom: 0.5rem;
@@ -1014,7 +1032,16 @@ html, body {
                             gap: 10px;
                             //justify-content: space-between;
                         }
-                        
+                        input{
+                            font-size: 15px;
+                            color:var(--panel-text-color);
+                            background-color: var(--panel-background-color);
+                            border: 1px solid #00000000;
+                        }
+                    
+                        input:hover {
+                            border: 1px solid var(--panel-text-color);
+                        }
                     }
                     .GraphPanel {  // this is actually class name of the Graph Panel
                         // margin: 1rem;
