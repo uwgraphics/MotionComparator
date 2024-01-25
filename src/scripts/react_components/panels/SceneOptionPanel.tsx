@@ -747,12 +747,12 @@ export class SceneOptionsPanel extends Component<scene_options_panel_props, scen
                 <AccordionItemPanel>
                   <div className={"SceneViews"}>
 
-                    <div className="top-line">
+                    <div>
 
                       <div className="row-container">
                         <label>Ground Plane:</label>
                           <label className="switch-left-label"> Show</label>
-                          <Switch
+                          <Switch 
                             checked={robotScene.isGroundPlaneVisible()}
                             onChange={this.onCheckGroundPlane.bind(this)}
                           />

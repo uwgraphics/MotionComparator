@@ -433,7 +433,7 @@ export class GraphOptionPanel extends Component<graph_panel_props, graph_panel_s
                               color={currSelectedGraph?.backgroundColor()}
                               onChange={(newColor) => this.onBackgroundColorChange(newColor)} />
                             <div className="ColorInput">
-                              <label>Type your color in a format like 777777</label>
+                              <label>Enter color in hex format (e.g., C5050C):</label>
                               <HexColorInput
                                 color={currSelectedGraph?.backgroundColor()}
                                 onChange={(newColor) => this.onBackgroundColorChange(newColor)} />

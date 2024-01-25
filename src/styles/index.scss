@@ -18,6 +18,7 @@ html, body {
     --lighter-panel-background-color: rgba(44, 59, 59, 0.7);
     --panel-text-color: rgb(238, 238, 238);
     --gray-color: rgb(122, 122, 122);
+    --dark-gray-color: rgb(50, 50, 50);
     --panel-link-text-color: #0066CC;
 
     background-color: black;
@@ -86,6 +87,12 @@ html, body {
         }
     }
 
+    .verticallyCentered {
+        position:absolute;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
     .DoubleTimeBar {
         width: 100%;
 
@@ -135,12 +142,17 @@ html, body {
             //     background-color: white;
             //     color: black;
             // }
+
+            
+            .MuiSwitch-track{
+                background-color: var(--gray-color);
+            }
         
             input[type=text] {
                 margin-left: 1rem;
                 font-size: 15px;
                 color:var(--panel-text-color);
-                background-color: var(--panel-background-color);
+                background-color: var(--dark-gray-color);
                 border: 1px solid #00000000;
             }
         
@@ -368,7 +380,6 @@ html, body {
                             float: left;
                         }
 
-
                         input[type=button]{
                             float: right;
                         }
@@ -445,43 +456,7 @@ html, body {
 
                     .LoadAndSavePanel {
 
-                        // height: 60%;
-                        // input[type=text] {
-                        //     border: 1px solid black;
-                        //     width: 7rem;
-                        //     background-color: var(--panel-background-color);
-                        //     color: black;
-                        // }
-
-                        // input[type=button], button, .fileInputHolder {
-                        //     background-color: var(--panel-background-color);
-                        //     border: 2px solid #d5dce0;
-                        //     color: #d5dce0;
-                        //     // padding-top: 0.25rem;
-                        //     // padding-bottom: 0.25rem;
-                        //     padding-left: 1rem;
-                        //     padding-right: 1rem;
-                        // }
-
                         color: var(--panel-text-color);
-
-                        // .Select{
-
-                        //     background-color: var(--panel-background-color);
-
-                        //     margin-top: 5px;
-                        //     margin-left: 1rem;
-                        //     height: 40px;
-                        //     display: flex;
-                        //     align-items: center;
-                        //     gap: 5px;
-                        //     .Select-container{
-                        //         width: 40%;
-                        //         // position: absolute;
-                        //         // left: 130px;
-                        //     }
-                        // }
-                        
                     
                         .MotionLoader{
                             .LoadRobot, .LoadCSV{
@@ -491,38 +466,16 @@ html, body {
                     }
 
                     .SceneSelectorPanel {
-                        
-                        td.sceneName {
-                            div {
-                                button {
-                                    text-decoration: underline;
-                                    text-underline-offset: 0.2rem;
-                                }
-                            }
-                        }
-
                         div + div {
                             margin-top: 0.5rem;
                         }
 
-                        .drag-initiator {
-
-                            button, input[type=button] {
-                                background-color: inherit;
-                                color: white;
-                                height: 100%;
-                                width: 100%;
-                                border-width: 2;
-                                padding-left: 0.5rem;
-                                padding-right: 0.5rem;
-                                padding-top: 0.5rem;
-                                padding-bottom: 0.5rem;
-
-                                font-size: 1.4rem;
-                                cursor: pointer;
+                        .ButtonGroup {
+                            .Button {
+                                margin-left: 0.5rem;
+                                float: left;
                             }
                         }
-
                     }
 
                     .RobotJointsPanel {
@@ -530,18 +483,6 @@ html, body {
                             margin-top: 0.25rem;
                             margin-bottom: 1.5rem;
                         }
-
-                        input[type=button] {
-                            padding-top: 0.25rem;
-                            padding-bottom: 0.25rem;
-                            padding-left: 0.5rem;
-                            padding-right: 0.5rem;
-                            margin-bottom: 0.25rem;
-                        }
-
-                        // .LabeledSlider + .LabeledSlider {
-                        //     margin-top: 1.2rem;
-                        // }
 
                     }
 
@@ -663,7 +604,7 @@ html, body {
 
                     .HomeTab {
                         color: var(--panel-text-color);
-                        text-align:center;
+                        text-align: center;
 
                         .ExampleImageGroup {
                             display: inline-block;
@@ -789,15 +730,7 @@ html, body {
                     .SceneOptionPanel{
                         display: block;
                         color: var(--panel-text-color);
-                        // input[type=button], button, .fileInputHolder{
-                        //     background-color: var(--panel-background-color);
-                        //     border: 2px solid #d5dce0;
-                        //     color: #d5dce0;
-                        //     // padding-top: 0.25rem;
-                        //     // padding-bottom: 0.25rem;
-                        //     padding-left: 1rem;
-                        //     padding-right: 1rem;
-                        // }
+                     
                         > * {
                             margin-bottom: 0.5rem;
                         }
@@ -805,29 +738,6 @@ html, body {
                             margin-bottom: 0.5rem;
                         }
 
-                        .Select{
-                            margin-top: 5px;
-                            height: 40px;
-                            display: flex;
-                            align-items: center;
-                            gap: 5px;
-                            .Select-container{
-                                width: 50%;
-                                position: absolute;
-                                left: 120px;
-                            }
-                        }
-
-                        input{
-                            font-size: 15px;
-                            color:var(--panel-text-color);
-                            background-color: var(--panel-background-color);
-                            border: 1px solid #00000000;
-                        }
-                    
-                        input:hover {
-                            border: 1px solid var(--panel-text-color);
-                        }
                     }
 
                     .ColorPicker{
@@ -983,23 +893,7 @@ html, body {
                             cursor: grab;
                             background: #583774;
                         }
-
-                        // .SceneSelectorPanel{
-                        //     .Button{
-                        //         font-size: 15px;
-                        //         font-family: 'Roboto' , sans-serif;
-                        //         background-color: var(--panel-background-color);
-                        //         padding: 0.25em 0.5em;
-                        //         border-radius: 1em;
-                        //         border: 2px solid #d5dce0;
-                        //         outline: none;
-                        //         color: #d5dce0;
-                        //         cursor: pointer;
-                        //     }
-                        //     .Button:hover{
-                        //         background: var(--panel-text-color);
-                        //     }
-                        // }
+                      
                     }
 
                     

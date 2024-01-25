@@ -453,7 +453,7 @@ export class SelectionPanel extends Component<
     return (
       <div className={"SelectionPanel"} id={"SelectionPanel"}>
           
-        <div style={{ marginBottom: "10px"}} id="group1" className="PopUpGroup">
+        <div id="group1" className="PopUpGroup">
           <button id="open-popup" className="OpenPop" onClick={() => APP.setPopupHelpPage(PopupHelpPage.SelectionPanel)}>
             <FontAwesomeIcon className="Icon" icon={faQuestion} />
           </button>

@@ -458,54 +458,59 @@ export class RobotWorkspace extends Component<robot_workspace_props, robot_works
                     <h1>👋 Welcome to Motion Comparator</h1>
 
                     <br></br>
+                    <br></br>
                     <h3> Motion Comparator helps roboticists  
                     visualize 👀, understand 💡, compare 🔍, and communiate 💬 
                      robot motions. </h3> 
                     <br></br>
+                    <br></br>
 
                     <div className="PopUpGroup" style={{justifyContent: "center", alignItems: "center"}}>
-                        <p>Click on the help icon </p>
+                        <p> Explore the examples below or click on the help icon </p>
                         <button id="open-popup" className="OpenPop" onClick={() => APP.setPopupHelpPage(PopupHelpPage.Home)}>
                             <FontAwesomeIcon className="Icon" icon={faQuestion} />
                         </button> 
-                        <p>to get started or explore the examples below </p>
+                        <p>to get started.</p>
                     </div>
-
-
-                    <div className={"ExampleImageGroup"}>
-                        <img src="https://raw.githubusercontent.com/uwgraphics/MotionComparator-Examples/main/workspaces/panda_pick_and_place/panda_pick_and_place.png" className={"ExampleImage"} alt="Panda Pick and Place"/>
-                        <div className={"ExampleImageOverlay"} onClick={() => this.onClickImage("https://raw.githubusercontent.com/uwgraphics/MotionComparator-Examples/main/workspaces/panda_pick_and_place/panda_pick_and_place.json")}>
-                            <div className={"ExampleImageOverlayText"}>Pick and Place Motions of Panda Robot </div>
-                        </div>
-                    </div>
-
-                    <div className={"ExampleImageGroup"}>
-                        <img src="https://raw.githubusercontent.com/uwgraphics/MotionComparator-Examples/main/workspaces/mico_legible/mico_legible.png" className={"ExampleImage"} alt="Mico Legible" />
-                        <div className={"ExampleImageOverlay"} onClick={() => this.onClickImage("https://raw.githubusercontent.com/uwgraphics/MotionComparator-Examples/main/workspaces/mico_legible/mico_legible.json")}>
-                            <div className={"ExampleImageOverlayText"}>Legible Motions of Mico Robot </div>
-                        </div>
-                    </div>
-
-                    <div className={"ExampleImageGroup"}>
-                        <img src="https://raw.githubusercontent.com/uwgraphics/MotionComparator-Examples/main/workspaces/spot_arm_sweep/spot_arm_sweep.png" className={"ExampleImage"} alt="Pick and Place" />
-                        <div className={"ExampleImageOverlay"} onClick={() => this.onClickImage("https://raw.githubusercontent.com/uwgraphics/MotionComparator-Examples/main/workspaces/spot_arm_sweep/spot_arm_sweep.json")}>
-                            <div className={"ExampleImageOverlayText"}>Sweeping Motions of Spot Robot </div>
-                        </div>
-                    </div>
-
-                    <div className={"ExampleImageGroup"}>
-                        <img src="https://raw.githubusercontent.com/uwgraphics/MotionComparator-Examples/main/workspaces/sawyer_teleop/sawyer_teleop.png" className={"ExampleImage"} alt="Pick and Place" />
-                        <div className={"ExampleImageOverlay"} onClick={() => this.onClickImage("https://raw.githubusercontent.com/uwgraphics/MotionComparator-Examples/main/workspaces/sawyer_teleop/sawyer_teleop.json")}>
-                            <div className={"ExampleImageOverlayText"}>Teleoperation of Sawyer Robot </div>
-                        </div>
-                    </div>
-
                     <br></br>
                     <br></br>
 
-                    <a href="https://github.com/motion-comparator/MotionComparator" target="_blank" rel="noopener noreferrer">
-                        <img src="https://raw.githubusercontent.com/tandpfun/skill-icons/main/icons/Github-Light.svg" className={"GithubIcon"} alt="Github" />
-                    </a>
+                    <div >
+                        <div className={"ExampleImageGroup"}>
+                            <img src="https://raw.githubusercontent.com/uwgraphics/MotionComparator-Examples/main/workspaces/panda_pick_and_place/panda_pick_and_place.png" className={"ExampleImage"} alt="Panda Pick and Place"/>
+                            <div className={"ExampleImageOverlay"} onClick={() => this.onClickImage("https://raw.githubusercontent.com/uwgraphics/MotionComparator-Examples/main/workspaces/panda_pick_and_place/panda_pick_and_place.json")}>
+                                <div className={"ExampleImageOverlayText"}>Pick and Place Motions of Panda Robot </div>
+                            </div>
+                        </div>
+
+                        <div className={"ExampleImageGroup"}>
+                            <img src="https://raw.githubusercontent.com/uwgraphics/MotionComparator-Examples/main/workspaces/mico_legible/mico_legible.png" className={"ExampleImage"} alt="Mico Legible" />
+                            <div className={"ExampleImageOverlay"} onClick={() => this.onClickImage("https://raw.githubusercontent.com/uwgraphics/MotionComparator-Examples/main/workspaces/mico_legible/mico_legible.json")}>
+                                <div className={"ExampleImageOverlayText"}>Legible Motions of Mico Robot </div>
+                            </div>
+                        </div>
+
+                        <div className={"ExampleImageGroup"}>
+                            <img src="https://raw.githubusercontent.com/uwgraphics/MotionComparator-Examples/main/workspaces/spot_arm_sweep/spot_arm_sweep.png" className={"ExampleImage"} alt="Pick and Place" />
+                            <div className={"ExampleImageOverlay"} onClick={() => this.onClickImage("https://raw.githubusercontent.com/uwgraphics/MotionComparator-Examples/main/workspaces/spot_arm_sweep/spot_arm_sweep.json")}>
+                                <div className={"ExampleImageOverlayText"}>Sweeping Motions of Spot Robot </div>
+                            </div>
+                        </div>
+
+                        <div className={"ExampleImageGroup"}>
+                            <img src="https://raw.githubusercontent.com/uwgraphics/MotionComparator-Examples/main/workspaces/sawyer_teleop/sawyer_teleop.png" className={"ExampleImage"} alt="Pick and Place" />
+                            <div className={"ExampleImageOverlay"} onClick={() => this.onClickImage("https://raw.githubusercontent.com/uwgraphics/MotionComparator-Examples/main/workspaces/sawyer_teleop/sawyer_teleop.json")}>
+                                <div className={"ExampleImageOverlayText"}>Teleoperation of Sawyer Robot </div>
+                            </div>
+                        </div>
+
+                        <br></br>
+                        <br></br>
+
+                        <a href="https://github.com/motion-comparator/MotionComparator" target="_blank" rel="noopener noreferrer">
+                            <img src="https://raw.githubusercontent.com/tandpfun/skill-icons/main/icons/Github-Light.svg" className={"GithubIcon"} alt="Github" />
+                        </a>
+                    </div>
                 </div>
             </div>
         );

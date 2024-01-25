@@ -142,7 +142,7 @@ export class SceneSelectorPanel extends Component<scene_selector_panel_props, sc
         return (
             <div className="SceneSelectorPanel"> 
                 { this.props.canEdit ? 
-                    <div className="ButtonGroup" style={{display:"flex", gap: "10px"}}>
+                    <div className="ButtonGroup">
                         <input className="Button" type="button" value={"New Scene"} onClick={() => {
                             let _default = sceneManager.addDefaultManagedRobotScene();
                             sceneManager.setCurrRobotScene(_default);
