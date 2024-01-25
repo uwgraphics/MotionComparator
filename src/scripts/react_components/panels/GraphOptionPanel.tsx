@@ -25,6 +25,7 @@ import { faQuestion } from '@fortawesome/free-solid-svg-icons';
 import { selectStyles } from "./SceneOptionPanel";
 import { APP } from "../../constants";
 import { PopupHelpPage } from "../popup_help_page";
+import { ColorPicker } from "../ColorPicker";
 
 
 export interface graph_panel_props {
@@ -428,17 +429,11 @@ export class GraphOptionPanel extends Component<graph_panel_props, graph_panel_s
                           </AccordionItemButton>
                         </AccordionItemHeading>
                         <AccordionItemPanel>
-                          <div className="ColorPicker">
-                            <HexColorPicker
-                              color={currSelectedGraph?.backgroundColor()}
-                              onChange={(newColor) => this.onBackgroundColorChange(newColor)} />
-                            <div className="ColorInput">
-                              <label>Enter color in hex format (e.g., C5050C):</label>
-                              <HexColorInput
-                                color={currSelectedGraph?.backgroundColor()}
-                                onChange={(newColor) => this.onBackgroundColorChange(newColor)} />
-                            </div>
-                          </div>
+                          <ColorPicker
+                            color={currSelectedGraph?.backgroundColor()}
+                            onColorMapChange={this.onBackgroundColorChange.bind(this)}
+                            forceUpdateTabNames={this.props.forceUpdateTabNames}
+                          />
                         </AccordionItemPanel>
                       </AccordionItem>
                     </Accordion>
@@ -450,17 +445,11 @@ export class GraphOptionPanel extends Component<graph_panel_props, graph_panel_s
                           </AccordionItemButton>
                         </AccordionItemHeading>
                         <AccordionItemPanel>
-                          <div className="ColorPicker">
-                            <HexColorPicker
-                              color={currSelectedGraph?.axisColor()}
-                              onChange={(newColor) => this.onAxisColorChange(newColor)} />
-                            <div className="ColorInput">
-                              <label>Type your color in a format like 777777</label>
-                              <HexColorInput
-                                color={currSelectedGraph?.axisColor()}
-                                onChange={(newColor) => this.onAxisColorChange(newColor)} />
-                            </div>
-                          </div>
+                          <ColorPicker
+                            color={currSelectedGraph?.axisColor()}
+                            onColorMapChange={this.onAxisColorChange.bind(this)}
+                            forceUpdateTabNames={this.props.forceUpdateTabNames}
+                          />
                         </AccordionItemPanel>
                       </AccordionItem>
                     </Accordion>

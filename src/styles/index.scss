@@ -750,6 +750,16 @@ html, body {
                                 margin-bottom: 0.5rem;
                             }
                         }
+                        input{
+                            font-size: 15px;
+                            color:var(--panel-text-color);
+                            background-color: var(--panel-background-color);
+                            border: 1px solid #00000000;
+                        }
+                    
+                        input:hover {
+                            border: 1px solid var(--panel-text-color);
+                        }
                     }
 
                     .RobotOptionPanel{
