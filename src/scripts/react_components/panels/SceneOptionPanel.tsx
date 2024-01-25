@@ -30,7 +30,7 @@ import { Animation } from "../../Animation";
 import { CamerasPanel } from "./CamerasPanel";
 import { LabeledTextInput } from "../LabeledTextInput";
 import T from "../../true_three";
-import { HexColorPicker } from "react-colorful";
+import { HexColorPicker, HexColorInput } from "react-colorful";
 import { LabeledCheckBox } from "../LabeledCheckBox";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faQuestion } from '@fortawesome/free-solid-svg-icons';
@@ -64,10 +64,10 @@ interface scene_options_panel_state {
 type OptionList = {value: string, name: string};
 
 export const selectStyles = {
-  option: (provided: any) => ({
+  option: (provided: any, state: any) => ({
     ...provided,
-    color: 'rgb(238, 238, 238)',
-    backgroundColor: "rgb(23, 24, 25)",
+    color: state.isFocused ? "rgb(23, 24, 25)" : 'rgb(238, 238, 238)',
+    backgroundColor: state.isFocused ? "#7BB2D9" : "rgb(23, 24, 25)",
   }),
   control: (base: any) => ({
     ...base,
@@ -81,6 +81,10 @@ export const selectStyles = {
     height: '100%',
     width: '100%',
     display: 'inline-flex',
+  }),
+  menuList: (provided: any, state: any) => ({
+    ...provided,
+    backgroundColor: "rgb(23, 24, 25)",
   }),
   placeholder:(provided: any) => ({
     ...provided,
@@ -834,9 +838,17 @@ export class SceneOptionsPanel extends Component<scene_options_panel_props, scen
                             </AccordionItemButton>
                           </AccordionItemHeading>
                           <AccordionItemPanel>
-                          <HexColorPicker
-                          color={robotScene.backgroundColor()}
-                          onChange={(newColor) => this.onColorMapChange(newColor)} />
+                            <div className="ColorPicker">
+                              <HexColorPicker
+                                color={robotScene.backgroundColor()}
+                                onChange={(newColor) => this.onColorMapChange(newColor)} />
+                              <div className="ColorInput">
+                                <label>Type your color in a format like 777777</label>
+                                <HexColorInput
+                                  color={robotScene.backgroundColor()}
+                                  onChange={(newColor) => this.onColorMapChange(newColor)} />
+                              </div>
+                            </div>
                           </AccordionItemPanel>
                         </AccordionItem>
                       </Accordion>
@@ -909,10 +921,8 @@ export class SceneOptionsPanel extends Component<scene_options_panel_props, scen
                         </div>
                       </div>
                       
-                      <div style={{marginBottom: "5px", display: "flex", alignItems: "center", justifyContent: "center"}}>
-                        {!isTimeWarp && <ClickButton buttonValue="Confirm" onClick={this.onConfirm.bind(this)}/>}
-                      </div>
                       <div className={"ButtonsContainer"} style={{display: "flex", gap: "1rem"}}>
+                        {!isTimeWarp && <ClickButton buttonValue="Confirm" onClick={this.onConfirm.bind(this)}/>}
                         <ClickButton buttonValue="Warped Time Bar" onClick={this.onTimeWarpBar.bind(this)}/>
                         <DragButton
                           className={"TimeWarp"}

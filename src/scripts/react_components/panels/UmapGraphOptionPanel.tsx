@@ -7,7 +7,7 @@ import { LabeledSlider } from "../LabeledSlider";
 import { DragButton } from "../DragButton";
 import { LabeledTextInput } from "../LabeledTextInput";
 import { UmapGraph } from "../../objects3D/UmapGraph";
-import { HexColorPicker } from "react-colorful";
+import { HexColorPicker, HexColorInput } from "react-colorful";
 import {
   Accordion,
   AccordionItem,
@@ -183,9 +183,17 @@ export class UmapGraphOptionPanel extends Component<graph_panel_props, graph_pan
                     </AccordionItemButton>
                   </AccordionItemHeading>
                   <AccordionItemPanel>
-                    <HexColorPicker
-                      color={currSelectedGraph?.backgroundColor()}
-                      onChange={(newColor) => this.onBackgroundColorChange(newColor)} />
+                    <div className="ColorPicker">
+                      <HexColorPicker
+                        color={currSelectedGraph?.backgroundColor()}
+                        onChange={(newColor) => this.onBackgroundColorChange(newColor)} />
+                      <div className="ColorInput">
+                        <label>Type your color in a format like 777777</label>
+                        <HexColorInput
+                          color={currSelectedGraph?.backgroundColor()}
+                          onChange={(newColor) => this.onBackgroundColorChange(newColor)} />
+                      </div>
+                    </div>
                   </AccordionItemPanel>
                 </AccordionItem>
               </Accordion>
@@ -197,9 +205,17 @@ export class UmapGraphOptionPanel extends Component<graph_panel_props, graph_pan
                     </AccordionItemButton>
                   </AccordionItemHeading>
                   <AccordionItemPanel>
-                    <HexColorPicker
-                      color={currSelectedGraph?.axisColor()}
-                      onChange={(newColor) => this.onAxisColorChange(newColor)} />
+                    <div className="ColorPicker">
+                      <HexColorPicker
+                        color={currSelectedGraph?.axisColor()}
+                        onChange={(newColor) => this.onAxisColorChange(newColor)} />
+                      <div className="ColorInput">
+                        <label>Type your color in a format like 777777</label>
+                        <HexColorInput
+                          color={currSelectedGraph?.axisColor()}
+                          onChange={(newColor) => this.onAxisColorChange(newColor)} />
+                      </div>
+                    </div>
                   </AccordionItemPanel>
                 </AccordionItem>
               </Accordion>

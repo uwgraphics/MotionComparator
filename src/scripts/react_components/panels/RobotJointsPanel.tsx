@@ -332,7 +332,15 @@ export class RobotJointsPanel extends Component<robot_joints_panel_props, robot_
                         />
                         <label className="switch-right-label"> Quaternion </label>
                     </div>
-                    {this.state.rotationType === "Euler" && <button onClick={this.toggleAngleType}>{this.state.angleType}</button>}
+                    <div className="row-container">
+                        <label>Unit</label>
+                        <label className="switch-left-label"> Degree</label>
+                        <Switch
+                            checked={this.state.angleType === "Degree"}
+                            onChange={this.toggleAngleType}
+                        />
+                        <label className="switch-right-label"> Radian </label>
+                    </div>
                 </div>
                 <div>
                     {sliders}
