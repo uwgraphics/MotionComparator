@@ -64,10 +64,10 @@ interface scene_options_panel_state {
 type OptionList = {value: string, name: string};
 
 export const selectStyles = {
-  option: (provided: any) => ({
+  option: (provided: any, state: any) => ({
     ...provided,
-    color: 'rgb(238, 238, 238)',
-    backgroundColor: "rgb(23, 24, 25)",
+    color: state.isFocused ? "rgb(23, 24, 25)" : 'rgb(238, 238, 238)',
+    backgroundColor: state.isFocused ? "#7BB2D9" : "rgb(23, 24, 25)",
   }),
   control: (base: any) => ({
     ...base,
@@ -81,6 +81,10 @@ export const selectStyles = {
     height: '100%',
     width: '100%',
     display: 'inline-flex',
+  }),
+  menuList: (provided: any, state: any) => ({
+    ...provided,
+    backgroundColor: "rgb(23, 24, 25)",
   }),
   placeholder:(provided: any) => ({
     ...provided,
