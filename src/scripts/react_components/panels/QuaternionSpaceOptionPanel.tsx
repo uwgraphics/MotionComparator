@@ -21,7 +21,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faQuestion } from '@fortawesome/free-solid-svg-icons';
 import { APP } from "../../constants";
 import { PopupHelpPage } from "../popup_help_page";
-
+import Switch from '@mui/material/Switch';
 
 export interface quaternion_panel_props {
     robotSceneManager: RobotSceneManager,
@@ -135,11 +135,13 @@ export class QuaternionSpaceOptionPanel extends Component<quaternion_panel_props
           />
         </div>
 
-        <div>
-          <LabeledCheckBox
-            label="Show World Frame"
+        <div className="row-container">
+          <label>Show World Frame</label>
+          <label className="switch-right-label">Show</label>
+          <Switch
             checked={currQuaternionSpaceScene?.isWorldFrameObjectVisible()}
             onChange={this.onCheckWorldFrame.bind(this)} />
+          <label className="switch-left-label">Hide</label>
         </div>
 
         <LabeledSlider
