@@ -68,14 +68,14 @@ export const selectStyles = {
   option: (provided: any, state: any) => ({
     ...provided,
     color: state.isFocused ? "rgb(23, 24, 25)" : 'rgb(238, 238, 238)',
-    backgroundColor: state.isFocused ? "#7BB2D9" : "rgb(23, 24, 25)",
+    backgroundColor: state.isFocused ? "#7BB2D9" : "rgb(50, 50, 50)",
   }),
   control: (base: any) => ({
     ...base,
     height: '100%',
     width: '100%',
-    backgroundColor: "rgb(23, 24, 25)",
-    borderColor: "rgb(23, 24, 25)",
+    backgroundColor: "rgb(50, 50, 50)",
+    borderColor: "rgb(50, 50, 50)",
   }),
   container: (provided: any, state: any) => ({
     ...provided,
@@ -85,7 +85,7 @@ export const selectStyles = {
   }),
   menuList: (provided: any, state: any) => ({
     ...provided,
-    backgroundColor: "rgb(23, 24, 25)",
+    backgroundColor: "rgb(50, 50, 50)",
   }),
   placeholder:(provided: any) => ({
     ...provided,
