@@ -501,12 +501,13 @@ export class LoadAndSavePanel extends Component<load_and_save_panel_props, load_
                     </div>
 
                     <div className="row-container">
-                        <label>Load from a url: </label>
+                        <label>Load CSV from a url: </label>
                         <input ref={this._animationCsvUrlInput} type="text" placeholder=" URL " />
                         <label>  </label>
                         <input type="button" value="Load" onClick={this.onLoadAnimationCSV} />
                     </div>
 
+                    <div className="LoadCSV"></div>
 
                     <div className="row-container">
                         <label> Upload a Rosbag: </label>
@@ -524,7 +525,7 @@ export class LoadAndSavePanel extends Component<load_and_save_panel_props, load_
                             <input type="button" value="Load" onClick={this.onLoadAnimationCSV} />
                         </div> */}
                     </div>
-
+                    <div className="LoadRosbag"></div>
                 </div>
             
                 {/*<input type="button" value="Export to GLTF" />*/}
