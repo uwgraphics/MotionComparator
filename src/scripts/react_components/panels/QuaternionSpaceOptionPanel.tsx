@@ -21,7 +21,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faQuestion } from '@fortawesome/free-solid-svg-icons';
 import { APP } from "../../constants";
 import { PopupHelpPage } from "../popup_help_page";
-
+import Switch from '@mui/material/Switch';
+import { ColorPicker } from "../ColorPicker";
 
 export interface quaternion_panel_props {
     robotSceneManager: RobotSceneManager,
@@ -135,11 +136,13 @@ export class QuaternionSpaceOptionPanel extends Component<quaternion_panel_props
           />
         </div>
 
-        <div>
-          <LabeledCheckBox
-            label="Show World Frame"
+        <div className="row-container">
+          <label>Show World Frame</label>
+          <label className="switch-right-label">Show</label>
+          <Switch
             checked={currQuaternionSpaceScene?.isWorldFrameObjectVisible()}
             onChange={this.onCheckWorldFrame.bind(this)} />
+          <label className="switch-left-label">Hide</label>
         </div>
 
         <LabeledSlider
@@ -159,17 +162,11 @@ export class QuaternionSpaceOptionPanel extends Component<quaternion_panel_props
               </AccordionItemButton>
             </AccordionItemHeading>
             <AccordionItemPanel>
-              <div className="ColorPicker">
-                <HexColorPicker
-                  color={currQuaternionSpaceScene?.backgroundColor()}
-                  onChange={(newColor) => this.onBackgroundColorChange(newColor)} />
-                <div className="ColorInput">
-                  <label>Type your color in a format like 777777</label>
-                  <HexColorInput
-                    color={currQuaternionSpaceScene?.backgroundColor()}
-                    onChange={(newColor) => this.onBackgroundColorChange(newColor)} />
-                </div>
-              </div>
+              <ColorPicker
+                color={currQuaternionSpaceScene?.backgroundColor()}
+                onColorMapChange={this.onBackgroundColorChange.bind(this)}
+                forceUpdateTabNames={this.props.forceUpdateTabNames}
+              />
             </AccordionItemPanel>
           </AccordionItem>
         </Accordion>
@@ -182,17 +179,11 @@ export class QuaternionSpaceOptionPanel extends Component<quaternion_panel_props
               </AccordionItemButton>
             </AccordionItemHeading>
             <AccordionItemPanel>
-              <div className="ColorPicker">
-                <HexColorPicker
-                  color={currQuaternionSpaceScene?.lineGroupColor()}
-                  onChange={(newColor) => this.onLineGroupColorChange(newColor)} />
-                <div className="ColorInput">
-                  <label>Type your color in a format like 777777</label>
-                  <HexColorInput
-                    color={currQuaternionSpaceScene?.lineGroupColor()}
-                    onChange={(newColor) => this.onLineGroupColorChange(newColor)} />
-                </div>
-              </div>
+              <ColorPicker
+                color={currQuaternionSpaceScene?.lineGroupColor()}
+                onColorMapChange={this.onLineGroupColorChange.bind(this)}
+                forceUpdateTabNames={this.props.forceUpdateTabNames}
+              />
             </AccordionItemPanel>
           </AccordionItem>
         </Accordion>

@@ -36,6 +36,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faQuestion } from '@fortawesome/free-solid-svg-icons';
 import Switch from '@mui/material/Switch';
 import { PopupHelpPage } from "../popup_help_page";
+import { ColorPicker } from "../ColorPicker";
 
 export interface scene_options_panel_props {
     robotSceneManager: RobotSceneManager,
@@ -838,17 +839,11 @@ export class SceneOptionsPanel extends Component<scene_options_panel_props, scen
                             </AccordionItemButton>
                           </AccordionItemHeading>
                           <AccordionItemPanel>
-                            <div className="ColorPicker">
-                              <HexColorPicker
-                                color={robotScene.backgroundColor()}
-                                onChange={(newColor) => this.onColorMapChange(newColor)} />
-                              <div className="ColorInput">
-                                <label>Type your color in a format like 777777</label>
-                                <HexColorInput
-                                  color={robotScene.backgroundColor()}
-                                  onChange={(newColor) => this.onColorMapChange(newColor)} />
-                              </div>
-                            </div>
+                            <ColorPicker
+                              color={robotScene.backgroundColor()}
+                              onColorMapChange={this.onColorMapChange.bind(this)}
+                              forceUpdateTabNames={this.props.forceUpdateTabNames}
+                            />
                           </AccordionItemPanel>
                         </AccordionItem>
                       </Accordion>

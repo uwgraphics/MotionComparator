@@ -12,7 +12,6 @@ import {
 import { RobotScene } from "../../scene/RobotScene";
 import { GraphPanel } from "./GraphPanel";
 import { Robot } from "../../objects3D/Robot";
-import { SceneSelectorPanel } from "./SceneSelectorPanel";
 import { DeleteButton } from "../DeleteButton";
 import { newID } from "../../helpers";
 import { DragButton } from "../DragButton";
@@ -450,6 +449,8 @@ export class SelectionPanel extends Component<
     const { selectedScenes } = this.state;
     const rsmanager = this.props.robotSceneManager;
     let scenes = rsmanager.allManagedRobotScenes();
+    const currScene = rsmanager.currRobotScene();
+    const currSceneData = currScene ? rsmanager.getManagedRobotSceneData(currScene) : undefined;
     return (
       <div className={"SelectionPanel"} id={"SelectionPanel"}>
           
@@ -457,11 +458,24 @@ export class SelectionPanel extends Component<
           <button id="open-popup" className="OpenPop" onClick={() => APP.setPopupHelpPage(PopupHelpPage.SelectionPanel)}>
             <FontAwesomeIcon className="Icon" icon={faQuestion} />
           </button>
-          <SceneSelectorPanel
-            getParentDockLayout={this.props.getParentDockLayout}
-            canEdit={true}
-            robotSceneManager={rsmanager}
-          />
+          <div className="SceneSelectorPanel">
+            <div className="ButtonGroup">
+              <input className="Button" type="button" value={"New Scene"} onClick={() => {
+                let _default = rsmanager.addDefaultManagedRobotScene();
+                rsmanager.setCurrRobotScene(_default);
+              }} />
+              <input className="Button" type="button" value={"Clone Scene"} onClick={(_) => {
+                if (currSceneData !== undefined) {
+                  let clone = currSceneData.robotScene.clone(true, false, true);
+                  rsmanager.addManagedRobotScenes([{
+                    path: [...currSceneData.path],
+                    robotScene: clone,
+                    metrics: new Map(currSceneData.metrics),
+                  }]);
+                }
+              }} />
+            </div>
+          </div>
         </div>
         {/* <Accordion allowZeroExpanded allowMultipleExpanded>
           <AccordionItem>
