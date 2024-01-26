@@ -85,7 +85,15 @@ export const selectStyles = {
   }),
   menuList: (provided: any, state: any) => ({
     ...provided,
+    width: "100%",
     backgroundColor: "rgb(50, 50, 50)",
+  }),
+  noOptionsMessage: (provided: any) => ({
+    ...provided,
+    height: '100%',
+    width: '100%',
+    backgroundColor: "rgb(50, 50, 50)",
+    borderColor: "rgb(50, 50, 50)",
   }),
   placeholder:(provided: any) => ({
     ...provided,
