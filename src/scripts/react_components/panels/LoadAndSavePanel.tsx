@@ -490,42 +490,44 @@ export class LoadAndSavePanel extends Component<load_and_save_panel_props, load_
                 </div>
                 <div className="top-line ">
                     <label> <b>  Motion </b>  </label>
-                    <div className="row-container">
-                        <label> Upload a CSV file </label>
-                        {/* <label> <b> Note: the header of the CSV must be in this format robotName-robotPartName </b>  </label> */}
-                        <FileUploader
-                            accept={[".csv"]}
-                            vertical={false}
-                            onChange={this.onUploadAnimationCSV}
-                        />
+
+                    <div className="LoadCSV">
+                        <div className="row-container">
+                            <label> Upload a CSV file </label>
+                            {/* <label> <b> Note: the header of the CSV must be in this format robotName-robotPartName </b>  </label> */}
+                            <FileUploader
+                                accept={[".csv"]}
+                                vertical={false}
+                                onChange={this.onUploadAnimationCSV}
+                            />
+                        </div>
+
+                        <div className="row-container">
+                            <label>Load CSV from a url: </label>
+                            <input ref={this._animationCsvUrlInput} type="text" placeholder=" URL " />
+                            <label>  </label>
+                            <input type="button" value="Load" onClick={this.onLoadAnimationCSV} />
+                        </div>
                     </div>
 
-                    <div className="row-container">
-                        <label>Load CSV from a url: </label>
-                        <input ref={this._animationCsvUrlInput} type="text" placeholder=" URL " />
-                        <label>  </label>
-                        <input type="button" value="Load" onClick={this.onLoadAnimationCSV} />
-                    </div>
+                    <div className="LoadRosbag">
+                        <div className="row-container">
+                            <label> Upload a Rosbag: </label>
+                            {/* <label> <b> Note: the header of the CSV must be in this format robotName-robotPartName </b>  </label> */}
+                            <FileUploader
+                                accept={[".bag"]}
+                                vertical={false}
+                                onChange={this.onUploadAnimationRosbag}
+                            />
 
-                    <div className="LoadCSV"></div>
-
-                    <div className="row-container">
-                        <label> Upload a Rosbag: </label>
-                        {/* <label> <b> Note: the header of the CSV must be in this format robotName-robotPartName </b>  </label> */}
-                        <FileUploader
-                            accept={[".bag"]}
-                            vertical={false}
-                            onChange={this.onUploadAnimationRosbag}
-                        />
-
-                        {/* <div className="row-container">
+                            {/* <div className="row-container">
                             <label>Load from a url: </label>
                             <input ref={this._animationCsvUrlInput} type="text" placeholder=" URL " />
                             <label>  </label>
                             <input type="button" value="Load" onClick={this.onLoadAnimationCSV} />
                         </div> */}
+                        </div>
                     </div>
-                    <div className="LoadRosbag"></div>
                 </div>
             
                 {/*<input type="button" value="Export to GLTF" />*/}
