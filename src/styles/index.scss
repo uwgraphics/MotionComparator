@@ -147,13 +147,24 @@ html, body {
             .MuiSwitch-track{
                 background-color: var(--gray-color);
             }
+
+            input{
+                font-size: 15px;
+                color:var(--panel-text-color);
+                background-color: var(--dark-gray-color);
+                border: 1px solid var(--gray-color);
+            }
+        
+            input:hover {
+                border: 1px solid var(--panel-text-color);
+            }
         
             input[type=text] {
                 margin-left: 1rem;
                 font-size: 15px;
                 color:var(--panel-text-color);
                 background-color: var(--dark-gray-color);
-                border: 1px solid #00000000;
+                border: 1px solid var(--gray-color);
             }
         
             input[type=text]:hover {
@@ -510,6 +521,7 @@ html, body {
                                 width: 2em;
                                 color:var(--panel-text-color);
                                 background-color: var(--panel-background-color);
+                                border: none;
                             }
 
                             input[type="range"] {
@@ -744,21 +756,14 @@ html, body {
                         display: flex;
                         gap: 5px;
                         .ColorInput{
-                            width: 40%;
+                            margin-left: 2rem;
+                            width: 50%;
+                            top: 40%;
+                            transform: translateY(40%);
                             > *{
                                 display: block; 
                                 margin-bottom: 0.5rem;
                             }
-                        }
-                        input{
-                            font-size: 15px;
-                            color:var(--panel-text-color);
-                            background-color: var(--panel-background-color);
-                            border: 1px solid #00000000;
-                        }
-                    
-                        input:hover {
-                            border: 1px solid var(--panel-text-color);
                         }
                     }
 
@@ -781,42 +786,6 @@ html, body {
                                 margin-bottom: 0.5rem;
                             }
                         }
-                        // .RobotSelectorPanel {
-                        //     color: var(--panel-text-color);
-                        //     > div {
-                        //         > label {
-                        //             @include panel_section_title;
-                        //         }
-                        //         margin-top: 1rem;
-                        //         margin-bottom: 1rem;
-                        //     }
-    
-                        //     input[type=range] {
-                        //         width: 100%;
-                        //     }
-    
-                        //     select {
-                        //         width: 100%;
-                        //     }
-    
-                        //     .LabeledTextInput {
-                        //         display: flex;
-    
-                        //         * + * {
-                        //             margin-left: 0.5rem;
-                        //         }
-                        //     }
-    
-                        //     .RobotPanel + .RobotPanel {
-                        //         margin-top: 1rem;
-                        //     }
-    
-                        //     .RobotPanel {
-                        //         padding: 1rem;
-                        //         background-color: var(--lighter-panel-background-color);
-    
-                        //     }
-                        // }
                     }
                     .SelectionPanel{
                         width: calc(100% - 2rem);
@@ -833,7 +802,7 @@ html, body {
                             .TrashIcon{
                                 font-size: 16px;
                                 //background-color: var(--panel-background-color);
-                                color: #d5dce0;
+                                color: var(--panel-text-color);
                             }
                         }
                         .ClickButton {
@@ -936,16 +905,7 @@ html, body {
                             gap: 10px;
                             //justify-content: space-between;
                         }
-                        input{
-                            font-size: 15px;
-                            color:var(--panel-text-color);
-                            background-color: var(--panel-background-color);
-                            border: 1px solid #00000000;
-                        }
-                    
-                        input:hover {
-                            border: 1px solid var(--panel-text-color);
-                        }
+                        
                     }
                     .GraphPanel {  // this is actually class name of the Graph Panel
                         // margin: 1rem;

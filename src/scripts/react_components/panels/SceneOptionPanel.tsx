@@ -903,14 +903,14 @@ export class SceneOptionsPanel extends Component<scene_options_panel_props, scen
                 <AccordionItemPanel>
                   {
                     <div>
-                      <div className={"Select"}>
-                        <span>Base Scene : </span>
+                      <div className={"row-container"}>
+                        <label>Base Scene : </label>
                         <div className={"Select-container"} >
                           {this.displayBaseScene(isTimeWarp)}
                         </div>
                       </div>
-                      <div className={"Select"}>
-                        <span>Key Object : </span>
+                      <div className={"row-container"}>
+                        <label>Key Object : </label>
                         <div className={"Select-container"}>
                           {this.displayKeyObjects(isTimeWarp)}
                         </div>

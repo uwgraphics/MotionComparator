@@ -26,6 +26,7 @@ import { selectStyles } from "./SceneOptionPanel";
 import { APP } from "../../constants";
 import { PopupHelpPage } from "../popup_help_page";
 import { ColorPicker } from "../ColorPicker";
+import { Color } from "three";
 
 
 export interface graph_panel_props {
@@ -359,11 +360,8 @@ export class GraphOptionPanel extends Component<graph_panel_props, graph_panel_s
                   </button>
             </div>
             <div style={{ marginBottom: "20px" }}>
-              <span style={{ fontWeight: "bold" }}>
-                Make Selections
-              </span>
               <div className={"Select"}>
-                <span>Property: </span>
+                <span>Y-axis: </span>
                 <div className={"Select-container"}>
                   <Select
                     placeholder={"Select a property ..."}

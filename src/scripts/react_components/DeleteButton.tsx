@@ -31,7 +31,7 @@ export class DeleteButton extends React.Component<delete_button_props,delete_but
         style={this.props.style}
         id={this.props.id}
       >
-        <FontAwesomeIcon className="TrashIcon" icon={faTrashAlt} />
+        <FontAwesomeIcon className="TrashIcon" icon={faTrashAlt} />  
       </button>
     );
   }
