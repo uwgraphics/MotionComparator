@@ -604,6 +604,9 @@ html, body {
 
                     .PopUpGroup{
                         align-items: center;
+                        margin-top: 0.5rem;
+                        margin-bottom: 0.5rem;
+
                         .OpenPop{
                             cursor: pointer;
                             // position: absolute;
@@ -723,30 +726,11 @@ html, body {
                             padding-bottom: 0.4rem;
                         }
 
-                        .LabeledSlider {
-                            display: flex;
-                            flex-grow: 100;
-                            align-items: center;
-                            height: 100%;
-
-                            .inputDiv {
-                                height: 100%;
-                                width: 100%;
-
-                                display: flex;
-                                align-items: center;
-
-                                input[type=text] {
-                                    width: 6rem;
-                                }
-
-                                input[type=range] {
-                                    display: flex;
-                                    margin-left: 1rem;
-                                    flex-grow: 100;
-                                }
-                            }
+                        input[type=text] {
+                            background-color: var(--panel-background-color);
+                            border: none;
                         }
+
                     }
                     .Legend{
                         .white-icon {
