@@ -32,6 +32,7 @@ export enum PopupHelpPage {
     Umap = "UMAP", // help page that describes what a "UMAP" is
     Qscene = "Quaternion Space Scene",
     AnimationCSV = "Animation CSV",
+    AnimationRosbag = "Animation Rosbag",
 
     // page to show when a page is not found
     PageNotFound = "Page Not Found",
@@ -494,9 +495,10 @@ function popupHelpPageContent(params:PopupHelpPageParams): ReactElement | null {
                     the {goTo(PopupHelpPage.LoadAndSavePanel)} panel.
                 </p>
                 <p>
-                    Robot motions must be in a special CSV format to work. If you
+                    Robot motions must be in a special CSV format or rosbag to work. If you
                     would like to learn more about motions and what the CSV
-                    format looks like, go {goTo(PopupHelpPage.AnimationCSV, "here")}.
+                    format looks like, go {goTo(PopupHelpPage.AnimationCSV, "here")}. 
+                    If you would like to learn more about how to load a rosbag, go {goTo(PopupHelpPage.AnimationRosbag, "here")}.
                 </p>
             </div>
         </div>;
@@ -880,6 +882,31 @@ function popupHelpPageContent(params:PopupHelpPageParams): ReactElement | null {
 
                 <p>
                     Below is the same CSV as above but in a more readable format.
+                </p>
+            </div>
+        </div>;
+
+    } else if (params.page === PopupHelpPage.AnimationRosbag) {
+        return <div>
+            <h1 className={HELP_TITLE}>Animation Rosbag</h1>
+            {homePageLink()}
+            <div className={HELP_BODY}>
+                <p>
+                    <li>1. load a rosbag file in the {goTo(PopupHelpPage.LoadAndSavePanel)}</li>
+                    <li>2. select a robot in the {goTo(PopupHelpPage.SelectionPanel)} </li>
+                    <li>3. in the {goTo(PopupHelpPage.RobotOptionPanel)}, click "Edit Motion Data"</li>
+                    <li>4. select the robot joint motions and the transformations in the "Available
+                        Joint Motion" and "Available Transformations" dropdown menu respectively.
+                    </li>
+                    <li>
+                        5. click "confirm". The joint motions and transformations for the robot will
+                        be binded.
+                    </li>
+                    <li>
+                        Note: You do not need to select anything if there is no robot joint motions or
+                        transformations
+                    </li>
+                    <img src={"https://raw.githubusercontent.com/uwgraphics/MotionComparator-Examples/main/gifs/upload_rosbag.gif"} alt={"A gif showing how to load motion from rosbag files"} />
                 </p>
             </div>
         </div>;

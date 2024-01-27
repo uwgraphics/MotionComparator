@@ -599,9 +599,24 @@ export class SceneOptionsPanel extends Component<scene_options_panel_props, scen
     }
   }
 
+  onGroundPlaneOpacityChange():(newValue:number) => void {
+    return (newValue:number) => {
+        this.props.robotScene.setGroundPlaneOpacity(newValue);
+        if(this.state.applyToAllScenes)
+          this.applyChangesToAll();
+    }
+  }
+
   onColorMapChange(newValue: string) {
     // console.log(newValue);
     this.props.robotScene.setBackgroundColor(newValue);
+    if(this.state.applyToAllScenes)
+      this.applyChangesToAll();
+  }
+
+  onGroundPlaneColorChange(newValue: string) {
+    // console.log(newValue);
+    this.props.robotScene.setGroundPlaneColor(newValue);
     if(this.state.applyToAllScenes)
       this.applyChangesToAll();
   }
@@ -687,6 +702,8 @@ export class SceneOptionsPanel extends Component<scene_options_panel_props, scen
     const axisDensity = robotScene.density();
     const showWorldFrameObject = robotScene.isWorldFrameObjectVisible();
     const traceSize = robotScene.traceSize();
+    const groundPlaneColor = robotScene.groundPlaneColor();
+    const groundPlaneOpacity = robotScene.groundPlaneOpacity();
     for(const scene of this.props.robotSceneManager.allManagedRobotScenes())
     {
       scene.setBackgroundColor(backgroundColor);
@@ -699,6 +716,8 @@ export class SceneOptionsPanel extends Component<scene_options_panel_props, scen
       scene.setDensity(axisDensity);
       scene.setWorldFrameObjectVisibility(showWorldFrameObject);
       scene.setTraceSize(traceSize);
+      scene.setGroundPlaneColor(groundPlaneColor);
+      scene.setGroundPlaneOpacity(groundPlaneOpacity);
     }
   }
 
@@ -807,6 +826,14 @@ export class SceneOptionsPanel extends Component<scene_options_panel_props, scen
                         step={0.1}
                         onChange={this.onAmbientLightChange()}
                       />
+                      <LabeledSlider
+                        label={"Ground Plane Opacity"}
+                        value={robotScene.groundPlaneOpacity()}
+                        min={0}
+                        max={1}
+                        step={0.01}
+                        onChange={this.onGroundPlaneOpacityChange()}
+                      />
                     </div>
                     <div className="top-line">
                       <LabeledSlider
@@ -850,6 +877,22 @@ export class SceneOptionsPanel extends Component<scene_options_panel_props, scen
                             <ColorPicker
                               color={robotScene.backgroundColor()}
                               onColorMapChange={this.onColorMapChange.bind(this)}
+                              forceUpdateTabNames={this.props.forceUpdateTabNames}
+                            />
+                          </AccordionItemPanel>
+                        </AccordionItem>
+                      </Accordion>
+                      <Accordion allowZeroExpanded allowMultipleExpanded>
+                        <AccordionItem>
+                          <AccordionItemHeading>
+                            <AccordionItemButton>
+                              Ground Plane Color
+                            </AccordionItemButton>
+                          </AccordionItemHeading>
+                          <AccordionItemPanel>
+                            <ColorPicker
+                              color={robotScene.groundPlaneColor()}
+                              onColorMapChange={this.onGroundPlaneColorChange.bind(this)}
                               forceUpdateTabNames={this.props.forceUpdateTabNames}
                             />
                           </AccordionItemPanel>
