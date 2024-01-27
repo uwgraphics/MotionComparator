@@ -195,6 +195,7 @@ export class RobotScene extends ThreeScene {
     protected _worldFrame: world_frames;
     protected _toggleWorldFrame: boolean;
     protected _groundPlaneColor: string;
+    protected _groundPlaneOpacity: number;
 
     protected _worldFrameObject: T.Object3D; // the actual world frame object
 
@@ -248,7 +249,8 @@ export class RobotScene extends ThreeScene {
         this._toggleCamera = false;
         this._worldFrame = "ROS";
         this._toggleWorldFrame = false;
-        this._groundPlaneColor = "#343536"
+        this._groundPlaneColor = "#343536";
+        this._groundPlaneOpacity = 0.2;
         // --------
         // callbacks
     }
@@ -350,6 +352,22 @@ export class RobotScene extends ThreeScene {
             const mesh = this._groundPlane as T.Mesh;
             const material = mesh.material as T.MeshStandardMaterial;
             material.color = new T.Color(color);
+            this.render();
+        }
+    }
+
+    // ----------
+    // helper functions to control the opacity of the ground plane
+    groundPlaneOpacity(): number{
+        return this._groundPlaneOpacity;
+    }
+
+    setGroundPlaneOpacity(opacity: number){
+        this._groundPlaneOpacity = opacity;
+        if (this._groundPlane instanceof T.Mesh) {
+            const mesh = this._groundPlane as T.Mesh;
+            const material = mesh.material as T.MeshStandardMaterial;
+            material.opacity = opacity;
             this.render();
         }
     }
