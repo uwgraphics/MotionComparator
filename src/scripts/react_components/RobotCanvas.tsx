@@ -9,6 +9,9 @@ import T from "../true_three";
 import { RobotLink } from "../objects3D/RobotLink";
 import { RobotJoint } from "../objects3D/RobotJoint";
 import { isAxesHelper, isMesh } from "../gaurds";
+import { ShaderMaterial, MeshStandardMaterial, BackSide, UniformsLib, UniformsUtils,
+    Color, NormalBlending, SrcAlphaFactor, OneMinusSrcAlphaFactor, AdditiveBlending,
+    ReverseSubtractEquation,  } from 'three';
 
 /**
  * Many objects have a "isCLASS_NAME" property to allow the programmer to
@@ -157,15 +160,25 @@ export class RobotCanvas extends Component<robot_canvas_props, robot_canvas_stat
             robotScene.scene().add(ambientLight);
             robotScene.setAmbientLight(ambientLight);
 
-            const ground = new T.Mesh(new T.PlaneBufferGeometry(), new T.ShadowMaterial({ opacity: 0.25 }));
-            // ground.position.y = 0; 
-            // ground.rotation.x = - Math.PI / 2; 
-            
-            ground.scale.setScalar(30);
+            // const ground = new T.Mesh(new T.PlaneBufferGeometry(), new T.ShadowMaterial({ opacity: 0.25 }));
+            const ground = new T.Mesh(new T.PlaneBufferGeometry(), new T.MeshStandardMaterial({ 
+                color: 0x343536,
+                opacity: 0.2,
+                transparent : true,
+                depthWrite : true,
+            }));
+            ground.scale.setScalar(20);
+            ground.position.z = -0.002;
             ground.receiveShadow = true;
             ground.visible = robotScene.isGroundPlaneVisible();
             robotScene.scene().add(ground);
-            robotScene.setGroundPlane(ground);
+
+            const grid = new T.GridHelper(20, 20, 0xffffff, 0x333333);
+            grid.rotation.x = Math.PI / 2;
+            grid.position.z = -0.001;
+            grid.visible = robotScene.isGroundPlaneVisible();
+            robotScene.scene().add(grid);
+            robotScene.setGroundPlane(ground, grid);
         });
     }
 

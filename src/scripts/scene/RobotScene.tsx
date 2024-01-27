@@ -189,6 +189,7 @@ export class RobotScene extends ThreeScene {
     protected _ambientLightIntensity: number;
     protected _ambientLight: T.AmbientLight;
     protected _groundPlane: T.Object3D;
+    protected _groundGrid: T.GridHelper;
     protected _cameraType: camera_type;
     protected _toggleCamera: boolean;
     protected _worldFrame: world_frames;
@@ -233,12 +234,15 @@ export class RobotScene extends ThreeScene {
 
         this._num_ee_targets = 0;
 
-        this._backgroundColor = "#263238"; // default background color of the scene
+        // this._backgroundColor = "#263238"; // default background color of the scene 
+        
+        this._backgroundColor = "#171718";
         this._directionalLightIntensity = 1.0;
         this._ambientLightIntensity = 0.2;
         this._directionalLight = new T.DirectionalLight();
         this._ambientLight = new T.AmbientLight();
         this._groundPlane = new T.Object3D();
+        this._groundGrid = new T.GridHelper(100, 100, 0x000000, 0x000000);
         this._cameraType = "Perspective";
         this._toggleCamera = false;
         this._worldFrame = "ROS";
@@ -341,12 +345,14 @@ export class RobotScene extends ThreeScene {
     setGroundPlaneVisibility(visible: boolean)
     {
         this._groundPlane.visible = visible;
+        this._groundGrid.visible = visible;
         this.render();
     }
     // initialize ground plane
-    setGroundPlane(groundPlane: T.Object3D)
+    setGroundPlane(groundPlane: T.Object3D, groundGrid: T.GridHelper)
     {
         this._groundPlane = groundPlane;
+        this._groundGrid = groundGrid;
     }
 
     // ----------
