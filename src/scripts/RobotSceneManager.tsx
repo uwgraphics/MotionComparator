@@ -608,6 +608,8 @@ export class RobotSceneManager {
     }
 
     startAnimations() {
+        if(this.currTime() >= this.currEndTime())
+            this.setCurrTime(this.currStartTime());
         this._animationLoop.start();
     }
 
