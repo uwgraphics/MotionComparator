@@ -606,6 +606,13 @@ export class SceneOptionsPanel extends Component<scene_options_panel_props, scen
       this.applyChangesToAll();
   }
 
+  onGroundPlaneColorChange(newValue: string) {
+    // console.log(newValue);
+    this.props.robotScene.setGroundPlaneColor(newValue);
+    if(this.state.applyToAllScenes)
+      this.applyChangesToAll();
+  }
+
   // onColorMapChange(): (newValue:string) => void {
   //   return (newValue:string) => {
   //     console.log(newValue);
@@ -687,6 +694,7 @@ export class SceneOptionsPanel extends Component<scene_options_panel_props, scen
     const axisDensity = robotScene.density();
     const showWorldFrameObject = robotScene.isWorldFrameObjectVisible();
     const traceSize = robotScene.traceSize();
+    const groundPlaneColor = robotScene.groundPlaneColor();
     for(const scene of this.props.robotSceneManager.allManagedRobotScenes())
     {
       scene.setBackgroundColor(backgroundColor);
@@ -699,6 +707,7 @@ export class SceneOptionsPanel extends Component<scene_options_panel_props, scen
       scene.setDensity(axisDensity);
       scene.setWorldFrameObjectVisibility(showWorldFrameObject);
       scene.setTraceSize(traceSize);
+      scene.setGroundPlaneColor(groundPlaneColor);
     }
   }
 
@@ -850,6 +859,22 @@ export class SceneOptionsPanel extends Component<scene_options_panel_props, scen
                             <ColorPicker
                               color={robotScene.backgroundColor()}
                               onColorMapChange={this.onColorMapChange.bind(this)}
+                              forceUpdateTabNames={this.props.forceUpdateTabNames}
+                            />
+                          </AccordionItemPanel>
+                        </AccordionItem>
+                      </Accordion>
+                      <Accordion allowZeroExpanded allowMultipleExpanded>
+                        <AccordionItem>
+                          <AccordionItemHeading>
+                            <AccordionItemButton>
+                              Ground Plane Color
+                            </AccordionItemButton>
+                          </AccordionItemHeading>
+                          <AccordionItemPanel>
+                            <ColorPicker
+                              color={robotScene.groundPlaneColor()}
+                              onColorMapChange={this.onGroundPlaneColorChange.bind(this)}
                               forceUpdateTabNames={this.props.forceUpdateTabNames}
                             />
                           </AccordionItemPanel>

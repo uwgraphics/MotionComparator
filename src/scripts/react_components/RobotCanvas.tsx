@@ -162,7 +162,7 @@ export class RobotCanvas extends Component<robot_canvas_props, robot_canvas_stat
 
             // const ground = new T.Mesh(new T.PlaneBufferGeometry(), new T.ShadowMaterial({ opacity: 0.25 }));
             const ground = new T.Mesh(new T.PlaneBufferGeometry(), new T.MeshStandardMaterial({ 
-                color: 0x343536,
+                color: new T.Color(robotScene.groundPlaneColor()),
                 opacity: 0.2,
                 transparent : true,
                 depthWrite : true,

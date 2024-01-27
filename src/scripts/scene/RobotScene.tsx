@@ -22,7 +22,7 @@ import { SubscriptableValue } from '../subscriptable/SubscriptableValue';
 import { DynamicTimeWarp } from '../DynamicTimeWarping';
 import { Arrow } from '../objects3D/Arrow';
 import * as d3 from 'd3'; 
-import { Vector3 } from 'three';
+import { Material, Vector3 } from 'three';
 import { PopupHelpPage } from '../react_components/popup_help_page';
 
 export type TimeWarpFunc = (baseTime: number) => number;
@@ -194,6 +194,7 @@ export class RobotScene extends ThreeScene {
     protected _toggleCamera: boolean;
     protected _worldFrame: world_frames;
     protected _toggleWorldFrame: boolean;
+    protected _groundPlaneColor: string;
 
     protected _worldFrameObject: T.Object3D; // the actual world frame object
 
@@ -247,6 +248,7 @@ export class RobotScene extends ThreeScene {
         this._toggleCamera = false;
         this._worldFrame = "ROS";
         this._toggleWorldFrame = false;
+        this._groundPlaneColor = "#343536"
         // --------
         // callbacks
     }
@@ -334,6 +336,22 @@ export class RobotScene extends ThreeScene {
     isToggleWorldFrame(): boolean
     {
         return this._toggleWorldFrame;
+    }
+
+    // ----------
+    // helper functions to control the color of the ground plane
+    groundPlaneColor(): string{
+        return this._groundPlaneColor;
+    }
+
+    setGroundPlaneColor(color: string){
+        this._groundPlaneColor = color;
+        if (this._groundPlane instanceof T.Mesh) {
+            const mesh = this._groundPlane as T.Mesh;
+            const material = mesh.material as T.MeshStandardMaterial;
+            material.color = new T.Color(color);
+            this.render();
+        }
     }
 
     // ----------
