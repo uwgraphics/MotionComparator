@@ -474,6 +474,8 @@ export class RobotOptionsPanel extends Component<robot_options_panel_props, robo
                           </div>
                           <input type="button" value="Confirm" onClick={this.onSelectJointMotion.bind(this)} />
                         </div>
+                      </div>
+                      <div className="top-line">
                         <div className={"Select-Transformation"}>
                           <label>Available Transformations</label>
 

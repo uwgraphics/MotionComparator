@@ -141,7 +141,7 @@ export class UmapGraphOptionPanel extends Component<graph_panel_props, graph_pan
                 }}
               /> */}
             </div>
-            <div>
+            <div className="top-line bottom-line">
               <LabeledSlider
                 label={"Line width: "}
                 min={0.1}
@@ -176,6 +176,8 @@ export class UmapGraphOptionPanel extends Component<graph_panel_props, graph_pan
                 value={currSelectedGraph?.spread()}
                 onMouseUp={this.props.robotSceneManager.getCurrUmapGraph()?.setSpread.bind(this.props.robotSceneManager.getCurrUmapGraph())}
               />
+            </div>
+            <div>
               <Accordion allowZeroExpanded allowMultipleExpanded>
                 <AccordionItem>
                   <AccordionItemHeading>

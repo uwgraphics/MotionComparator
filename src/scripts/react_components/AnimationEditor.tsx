@@ -53,12 +53,12 @@ export class AnimationEditor extends Component<animation_editor_modal_props, ani
         let animationGroups = this.props.animationManager.animationGroups();
 
         let errorMessage:string = "";
-        const errorMessageStart = "This tab is used to bind animations to objects. You can not do this at a moment because ";
+        const errorMessageStart = "This tab binds motions to robots. You can not do it now because ";
 
         if (robots.length === 0) {
-            errorMessage = errorMessageStart + "you need to load in at least one object before you can bind an animation to it."
+            errorMessage = errorMessageStart + "no robots have been loaded in."
         } else if (animationTables.length === 0) {
-            errorMessage = errorMessageStart + "you need to load in at least one animation before you can bind it to an object."
+            errorMessage = errorMessageStart + "no motions have been loaded in."
         } else if (animationGroups.length === 0) {
             this.onAddGroup();
         }
@@ -80,16 +80,16 @@ export class AnimationEditor extends Component<animation_editor_modal_props, ani
                     :
                     <div>
                         <LabeledTextInput
-                    labelValue="Offset:"
-                    value={`${animation?.offset()}`}
-                    filter={onlyNumbersFilter}
-                    onReturnPressed={(value:string) => {
-                        let numValue = parseFloat(value);
-                        if (!isNaN(numValue)) {
-                            animation?.setOffset(numValue);
-                        }
-                    }}
-                />
+                            labelValue="Offset:"
+                            value={`${animation?.offset()}`}
+                            filter={onlyNumbersFilter}
+                            onReturnPressed={(value:string) => {
+                                let numValue = parseFloat(value);
+                                if (!isNaN(numValue)) {
+                                    animation?.setOffset(numValue);
+                                }
+                            }}
+                        />
                     </div>
                 }
             </div>

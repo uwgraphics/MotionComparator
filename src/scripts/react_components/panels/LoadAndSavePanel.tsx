@@ -444,7 +444,7 @@ export class LoadAndSavePanel extends Component<load_and_save_panel_props, load_
                     </div>
                     <div className="row-container">
                         <label> Load from a url: </label>
-                        <input ref={this._importSceneURLInput} type="text" placeholder=" URL" />
+                        <input ref={this._importSceneURLInput} type="text" placeholder="URL" />
                         <input type="button" value="Load" onClick={this.onLoadSession} />
                     </div>
                     <div className="row-container">

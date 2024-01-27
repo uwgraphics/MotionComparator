@@ -135,16 +135,15 @@ export class QuaternionSpaceOptionPanel extends Component<quaternion_panel_props
             }}
           />
         </div>
-
-        <div className="row-container">
-          <label>Show World Frame</label>
-          <label className="switch-right-label">Show</label>
-          <Switch
-            checked={currQuaternionSpaceScene?.isWorldFrameObjectVisible()}
-            onChange={this.onCheckWorldFrame.bind(this)} />
-          <label className="switch-left-label">Hide</label>
-        </div>
-
+        <div className="top-line bottom-line">
+          <div className="row-container">
+            <label>Show World Frame</label>
+            <label className="switch-right-label">Show</label>
+            <Switch
+              checked={currQuaternionSpaceScene?.isWorldFrameObjectVisible()}
+              onChange={this.onCheckWorldFrame.bind(this)} />
+            <label className="switch-left-label">Hide</label>
+          </div>
         <LabeledSlider
           label={"Opacity of Longitude and Latitude: "}
           min={0}
@@ -153,6 +152,7 @@ export class QuaternionSpaceOptionPanel extends Component<quaternion_panel_props
           value={currQuaternionSpaceScene?.lineGroupOpacity()}
           onChange={this.onChangeLineOpacity.bind(this)}
         />
+        </div>
 
         <Accordion allowZeroExpanded allowMultipleExpanded>
           <AccordionItem>

@@ -359,19 +359,18 @@ export class GraphOptionPanel extends Component<graph_panel_props, graph_panel_s
                       <FontAwesomeIcon className="Icon" icon={faQuestion} />
                   </button>
             </div>
-            <div style={{ marginBottom: "20px" }}>
-              <div className={"Select"}>
-                <span>Y-axis: </span>
-                <div className={"Select-container"}>
-                  <Select
-                    placeholder={"Select a property ..."}
-                    ref={this.dropdownRef[0]}
-                    options={this.genPropertyOptions()}
-                    onChange={this.onChangeProperty.bind(this)}
-                    isSearchable={true}
-                    styles={selectStyles}
-                  />
-                </div>
+
+            <div className={"labeledSelect"}>
+              <label> Y-axis: </label>
+              <div className={"select-container"}>
+                <Select
+                  placeholder={"Select a property ..."}
+                  ref={this.dropdownRef[0]}
+                  options={this.genPropertyOptions()}
+                  onChange={this.onChangeProperty.bind(this)}
+                  isSearchable={true}
+                  styles={selectStyles}
+                />
               </div>
               <div className={"Select"} style={speciPropertiesOptionStyle}>
                 <span>Details:</span>
@@ -393,6 +392,39 @@ export class GraphOptionPanel extends Component<graph_panel_props, graph_panel_s
                   onClick={this.onUpdate.bind(this)}
                 />
               </div> */}
+            </div>
+            <div className={"ButtonsContainer"}>
+              <DragButton
+                buttonValue={"New Graph"}
+                title={"Click and drag to create a new graph"}
+                getParentDockLayout={this.props.getParentDockLayout}
+                onDragStart={() => {
+                  let new_id = newID(4);
+                  
+                  return [
+                    // Tab ID
+                    `Graph&${new_id}&motion`,
+
+                    // onDrop Callback
+                    (e) => {this.createNewGraphTab(new_id, false)},
+                  ];
+                }}
+              />
+              <DragButton
+                buttonValue={"Difference Graph"}
+                title={"Click and drag to create a new difference graph"}
+                getParentDockLayout={this.props.getParentDockLayout}
+                onDragStart={() => {
+                  let new_id = newID(4);
+                  return [
+                    // Tab ID
+                    `DifferenceGraph&${new_id}&motion`,
+
+                    // onDrop Callback
+                    (e) => {this.createNewGraphTab(new_id, true)},
+                  ];
+                }}
+              />
             </div>
             <Accordion allowZeroExpanded allowMultipleExpanded>
               <AccordionItem>
@@ -464,39 +496,7 @@ export class GraphOptionPanel extends Component<graph_panel_props, graph_panel_s
                 onClick={this.onLegend.bind(this)}
               />
             </div> */}
-            <div className={"ButtonsContainer"}>
-              <DragButton
-                buttonValue={"New Graph"}
-                title={"Click and drag to create a new graph"}
-                getParentDockLayout={this.props.getParentDockLayout}
-                onDragStart={() => {
-                  let new_id = newID(4);
-                  
-                  return [
-                    // Tab ID
-                    `Graph&${new_id}&motion`,
-
-                    // onDrop Callback
-                    (e) => {this.createNewGraphTab(new_id, false)},
-                  ];
-                }}
-              />
-              <DragButton
-                buttonValue={"Difference Graph"}
-                title={"Click and drag to create a new difference graph"}
-                getParentDockLayout={this.props.getParentDockLayout}
-                onDragStart={() => {
-                  let new_id = newID(4);
-                  return [
-                    // Tab ID
-                    `DifferenceGraph&${new_id}&motion`,
-
-                    // onDrop Callback
-                    (e) => {this.createNewGraphTab(new_id, true)},
-                  ];
-                }}
-              />
-            </div>
+            
           </div>
         );
     }
