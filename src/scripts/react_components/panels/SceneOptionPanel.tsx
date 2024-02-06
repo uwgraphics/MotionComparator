@@ -67,6 +67,7 @@ type OptionList = {value: string, name: string};
 export const selectStyles = {
   option: (provided: any, state: any) => ({
     ...provided,
+    fontSize: "15px",
     color: state.isFocused ? "rgb(23, 24, 25)" : 'rgb(238, 238, 238)',
     backgroundColor: state.isFocused ? "#7BB2D9" : "rgb(50, 50, 50)",
   }),
@@ -90,6 +91,7 @@ export const selectStyles = {
   }),
   noOptionsMessage: (provided: any) => ({
     ...provided,
+    fontSize: "15px",
     height: '100%',
     width: '100%',
     backgroundColor: "rgb(50, 50, 50)",
@@ -97,6 +99,7 @@ export const selectStyles = {
   }),
   placeholder:(provided: any) => ({
     ...provided,
+    fontSize: "15px",
     color: "rgb(183, 183, 189)",
   }),
   singleValue:(provided: any) => ({
