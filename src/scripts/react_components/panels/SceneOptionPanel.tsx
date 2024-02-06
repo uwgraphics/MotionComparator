@@ -53,7 +53,7 @@ interface scene_options_panel_state {
     panelHeight: number, // height of panel captured by resize observer
     dropdowns: boolean[], // keep track of all dropdown menus, true means selected, false otherwise
     baseScene: RobotScene | undefined,
-    keyObject: string,
+    keyObjects: string[],
     currRobot: Map<string, string>,
     currJoint: Map<string, string>, // mapping robot name to joint name
     need_update: boolean
@@ -128,7 +128,7 @@ export class SceneOptionsPanel extends Component<scene_options_panel_props, scen
             need_update: true,
             currWarpedScene: undefined,
             applyToAllScenes: false,
-            keyObject: "",
+            keyObjects: [],
         };
         this._graphDiv = createRef();
         for(let i=0; i<2; i++)
@@ -164,7 +164,7 @@ export class SceneOptionsPanel extends Component<scene_options_panel_props, scen
      * @returns 
      */
     genKeyObjectOptions(){
-      let result: {value: string,  label: string; }[] = [];
+      let result: OptionList[] = [];
       const { robotScene } = this.props;
       const baseScene = this.state.baseScene;
       
@@ -174,18 +174,18 @@ export class SceneOptionsPanel extends Component<scene_options_panel_props, scen
           // add robot into the options
           result.push({
             value: robot.id().value(),
-            label: robot.name() + "\n" + " position",
+            name: robot.name() + "\n" + " position",
           });
 
           // add joint into the options
           for (const joint of robot.articuatedJoints()) {
             result.push({
               value: joint.id().value(),
-              label: robot.name() + "\n" + joint.name() + " position",
+              name: robot.name() + "\n" + joint.name() + " position",
             })
             result.push({
               value: joint.id().value(),
-              label: robot.name() + "\n" + joint.name() + " angle",
+              name: robot.name() + "\n" + joint.name() + " angle",
             })
           }
 
@@ -193,7 +193,7 @@ export class SceneOptionsPanel extends Component<scene_options_panel_props, scen
           for (const link of robot.links()) {
             result.push({
               value: link.id().value(),
-              label: robot.name() + "\n" + link.name() + " position",
+              name: robot.name() + "\n" + link.name() + " position",
             })
           }
 
@@ -230,17 +230,17 @@ export class SceneOptionsPanel extends Component<scene_options_panel_props, scen
      * @param e 
      * @returns 
      */
-    onChangeKeyObject(e:any){
-      //TODO deactivate scenes after nothing is graphed?
-      this.deselectDropdowns(1);
-      const value = e.label;
-      if(!value) return;
+    // onChangeKeyObject(e:any){
+    //   //TODO deactivate scenes after nothing is graphed?
+    //   this.deselectDropdowns(1);
+    //   const value = e.label;
+    //   if(!value) return;
       
-      this.setState({
-        keyObject: value,
-      });
-      this.selectDropdowns(1);
-    }
+    //   this.setState({
+    //     keyObject: value,
+    //   });
+    //   this.selectDropdowns(1);
+    // }
 
     componentDidUpdate(prevProps:scene_options_panel_props) {
       const {robotScene} = this.props;
@@ -291,16 +291,16 @@ export class SceneOptionsPanel extends Component<scene_options_panel_props, scen
    * @param event 
    */
   onConfirm(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
-    for (let i = 0; i < 2; i++) // check whether the first four dropdowns are selected
+    for (let i = 0; i < 1; i++) // check whether the first four dropdowns are selected
     {
       if (!this.state.dropdowns[i])
         throw new Error(`${i} Not every dropdown is selected. Need to select all dropdowns to show the graph`);
     }
-    // if (this.selectedOptions.length == 0) // check whether the multiselect is selected
-    //   throw new Error(`Not every dropdown is selected. Need to select all dropdowns to show the graph`);
+    if (this.selectedOptions.length == 0) // check whether the multiselect is selected
+      throw new Error(`Not every dropdown is selected. Need to select all dropdowns to show the graph`);
 
     const { robotScene, robotSceneManager } = this.props;
-    const {baseScene, keyObject} = this.state;
+    const {baseScene, keyObjects} = this.state;
     // set the time warp base scene
     // robotSceneManager.setTimeWarpBase(baseScene);
 
@@ -320,11 +320,11 @@ export class SceneOptionsPanel extends Component<scene_options_panel_props, scen
 
       clone.setTimeWarpBase(baseScene);
 
-      // let keyObjects: string[] = [];
+      let keyObjects: string[] = [];
       // add time warp objects
-      // for (const option of this.selectedOptions) {
-        // keyObjects.push(option.name);
-        const[robotName, content] = keyObject.split("\n");
+      for (const option of this.selectedOptions) {
+        keyObjects.push(option.name);
+        const[robotName, content] = option.name.split("\n");
         const [robotPartName, typeName] = content.split(" ");
         // console.log(robotPartName);
         // console.log(typeName);
@@ -351,9 +351,9 @@ export class SceneOptionsPanel extends Component<scene_options_panel_props, scen
         // recalculate time warp
         clone.setTimeWarpBase(undefined);
         clone.setTimeWarpBase(baseScene);
-      //}
-      // clone.setKeyObjects(keyObjects);
-      clone.setKeyObjects([keyObject]);
+      }
+       clone.setKeyObjects(keyObjects);
+      // clone.setKeyObjects([keyObject]);
     }
   }
 
@@ -486,46 +486,46 @@ export class SceneOptionsPanel extends Component<scene_options_panel_props, scen
     }
     else
       content = (
-        // <Multiselect
-        //   placeholder={"Select a key object ..."}
-        //   showCheckbox={true}
-        //   displayValue={"name"}
-        //   style={{
-        //     option: {
-        //       color: "black",
-        //       fontSize: "15px",
-        //     },
-        //     searchBox: {
-        //       // fontSize: "25px",
-        //       backgroundColor: "rgb(23, 24, 25)",
-        //     },
-        //     inputField: { // To change input field position or margin
-        //       fontSize: "15px",
-        //       marginLeft: "5px",
-        //     },
-        //   }}
-        //   onSelect={(_, selectedItem: OptionList) => {
-        //     this.selectedOptions.push(selectedItem);
-        //     //console.log("select " + selectedItem.name);
-        //   }}
-        //   onRemove={(_, removedItem: OptionList) => {
-        //     // console.log("remove " + removedItem.value);
-        //     this.selectedOptions = this.selectedOptions.filter(
-        //       (option) => option.value !== removedItem.value
-        //     );
-        //     //console.log(this.selectedOptions.length + " remaining");
-        //   }}
-        //   options={this.genKeyObjectOptions()}
-        //   selectedValues={this.selectedOptions}
-        // />
-        <Select
-          placeholder={"Select key objects ..."}
-          ref={this.dropdownRef[1]}
+        <Multiselect
+          placeholder={"Select a key object ..."}
+          showCheckbox={true}
+          displayValue={"name"}
+          style={{
+            option: {
+              color: "black",
+              fontSize: "15px",
+            },
+            searchBox: {
+              // fontSize: "25px",
+              backgroundColor: "rgb(23, 24, 25)",
+            },
+            inputField: { // To change input field position or margin
+              fontSize: "15px",
+              marginLeft: "5px",
+            },
+          }}
+          onSelect={(_, selectedItem: OptionList) => {
+            this.selectedOptions.push(selectedItem);
+            console.log("select " + selectedItem.name);
+          }}
+          onRemove={(_, removedItem: OptionList) => {
+            // console.log("remove " + removedItem.value);
+            this.selectedOptions = this.selectedOptions.filter(
+              (option) => option.value !== removedItem.value
+            );
+            //console.log(this.selectedOptions.length + " remaining");
+          }}
           options={this.genKeyObjectOptions()}
-          onChange={this.onChangeKeyObject.bind(this)}
-          isSearchable={true}
-          styles={selectStyles}
+          selectedValues={this.selectedOptions}
         />
+        // <Select
+        //   placeholder={"Select key objects ..."}
+        //   ref={this.dropdownRef[1]}
+        //   options={this.genKeyObjectOptions()}
+        //   onChange={this.onChangeKeyObject.bind(this)}
+        //   isSearchable={true}
+        //   styles={selectStyles}
+        // />
 
       );
     return content;
