@@ -494,18 +494,40 @@ export class SceneOptionsPanel extends Component<scene_options_panel_props, scen
           showCheckbox={true}
           displayValue={"name"}
           style={{
+            optionContainer: { // To change css for option container 
+              border: "none",
+            },
             option: {
-              color: "black",
+              color:   'rgb(238, 238, 238)',
+              backgroundColor: "rgb(50, 50, 50)",
               fontSize: "15px",
             },
             searchBox: {
-              // fontSize: "25px",
+              fontSize: "15px",
+              border: "none",
               backgroundColor: "rgb(23, 24, 25)",
+              width: "100%",
+              marginLeft: "-1rem", // the global style of the text input has marginLeft 1rem
             },
             inputField: { // To change input field position or margin
               fontSize: "15px",
-              marginLeft: "5px",
+              width: "100%",
+              padding: "1rem 1rem",
             },
+            chips: {
+              // Styles for the selected options/chips
+              backgroundColor: "rgb(50, 50, 50)",
+              color: "rgb(238, 238, 238)",
+              fontSize: "15px",
+            },
+            notFound: {
+              color:   'rgb(238, 238, 238)',
+              backgroundColor: "rgb(50, 50, 50)",
+              fontSize: "15px",
+            },
+            placeholder:{
+              backgroundColor: "rgb(238, 238, 238)",
+            }
           }}
           onSelect={(_, selectedItem: OptionList) => {
             this.selectedOptions.push(selectedItem);
@@ -965,11 +987,11 @@ export class SceneOptionsPanel extends Component<scene_options_panel_props, scen
                       </div>
                       <div className={"row-container"}>
                         <label>Key Object : </label>
-                        <div className={"Select-container"}>
-                          {this.displayKeyObjects(isTimeWarp)}
-                        </div>
                       </div>
-                      
+                      <div className={"Multiselect-container"}>
+                        {this.displayKeyObjects(isTimeWarp)}
+                      </div>
+                        
                       <div className={"ButtonsContainer"} style={{display: "flex", gap: "1rem"}}>
                         {!isTimeWarp && <ClickButton buttonValue="Confirm" onClick={this.onConfirm.bind(this)}/>}
                         <ClickButton buttonValue="Warped Time Bar" onClick={this.onTimeWarpBar.bind(this)}/>
