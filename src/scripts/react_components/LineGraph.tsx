@@ -73,7 +73,6 @@ export class LineGraph extends Component<line_graph_props, line_graph_state> {
         super(props);
         this._graphDiv = createRef();
         this.drawGraph.bind(this);
-        const {width, height} = this.props;
         this.state = {
             // w: width,//+300,//1015,
             // h: height,//600,
@@ -103,7 +102,9 @@ export class LineGraph extends Component<line_graph_props, line_graph_state> {
             this._graphDiv.current.removeChild(this._graphDiv.current.children[0]);
         }
         // const {w, h} = this.state;
-        const {height, width} = this.props;
+        let {height, width} = this.props;
+        width = width - 20;
+        height = height - 20;
         let svg = this.drawGraph(true, true);
         if(svg){
             d3.select(this._graphDiv.current)
@@ -139,7 +140,9 @@ export class LineGraph extends Component<line_graph_props, line_graph_state> {
                 this._graphDiv.current.removeChild(this._graphDiv.current.children[0]);
             }
             // const {w, h} = this.state;
-            const {width, height} = this.props;
+            let {width, height} = this.props;
+            width = width - 20;
+            height = height - 20;
             let svg = this.drawGraph(boundChangeInZoom, colorChange, windowChanged, lineWidthChange);
             // log(svg);
             // console.log("width " + w + " height " + h);
@@ -460,59 +463,18 @@ export class LineGraph extends Component<line_graph_props, line_graph_state> {
             onGraphUpdate} = this.props;
         const w = this.props.width;
         const h = this.props.height;
-        const legendW = w * 0.5;
         const isDataChanged = this.prevMapChanged();
         
         const {margin, prev_lines, prev_x, prev_y} = this.state;
-        //width = w - margin.left - margin.right,
-        const width = w - margin.left - margin.right,
-        height = h - margin.top - margin.bottom;
+        const width = w - margin.left - margin.right - 20;
+        const height = h - margin.top - margin.bottom - 20;
         
         // create svg component
         let svg = d3.select(this._graphDiv.current).append("svg").remove()
-            .attr("width", width + margin.left + margin.right)
-            .attr("height", height + margin.top + margin.bottom)
+            .attr("width", width)
+            .attr("height", height)
             .append("g")
             .attr("transform", `translate(${margin.left},     ${margin.top})`);
-
-        // const min = 0, max = 8; // default min and max of x and y axis
-        // if(!times.length || !vals.length){
-        //     // draw an empty graph
-        //     // log("Warning: Empty times and vals for LineGraph")
-
-        //     const timeBarCurr = LineGraph.xPositionFromTime(width, startTime, endTime, currTime);
-        //     // console.log(startTime + " " + endTime + " " + width);
-        //     // console.log(this.props.width);
-        //     svg.append("rect")
-        //         .attr("x", timeBarCurr -1)
-        //         .attr("y", 0)
-        //         .attr("width", 2)
-        //         .attr("height", height)
-        //         .attr("fill", "#b00")
-        //         .attr("fill-opacity","75%");
-
-        //     x_axis = d3.scaleLinear().range([0, width]);
-        //     y_axis = d3.scaleLinear().range([height, 0]);
-        //     x_axis.domain(d3.extent([startTime, endTime]));
-        //     y_axis.domain(d3.extent([min, max]));
-        //     let xAxis = svg.append("g")
-        //         .attr("transform", `translate(0, ${height})`)
-        //         .call(d3.axisBottom(x_axis).tickSize(0));
-        //     let yAxis = svg.append("g")
-        //         .call(d3.axisLeft(y_axis).tickSize(0));
-
-        //     xAxis.selectAll("line, path")
-        //         .style("stroke", axisColor);
-        //     yAxis.selectAll("line, path")
-        //         .style("stroke", axisColor);
-        //     xAxis.selectAll("text")
-        //         .style("fill", axisColor);
-        //     yAxis.selectAll("text")
-        //         .style("fill", axisColor);
-            
-        //     onGraphUpdate(true);
-        //     return svg.node();
-        // }
 
         let [zoomedTimes, zoomedValues] = this.filterData(startTime, endTime);
 
@@ -524,16 +486,7 @@ export class LineGraph extends Component<line_graph_props, line_graph_state> {
             .on('start', (event:any)=>{this.currMouse(event)})
             .on('drag', (event:any)=>{this.dragCurr(event)})
             .on('end', (event:any)=>{this.endMouse(event)});
-            
-        // let dragS = d3.drag()
-        //     .on('start', (event:any)=>{this.currMouse(event)})
-        //     .on('drag', (event:any)=>{this.dragStart(event)})
-        //     .on('end', (event:any)=>{this.endMouse(event)});
-        // let dragE = d3.drag()
-        //     .on('start', (event:any)=>{this.currMouse(event)})
-        //     .on('drag', (event:any)=>{this.dragEnd(event)})
-        //     .on('end', (event:any)=>{this.endMouse(event)}); 
-        
+  
         let timeConcat = LineGraph.concatData(zoomedTimes);
         let valConcat = LineGraph.concatData(zoomedValues);
         const timeBarStart = LineGraph.xPositionFromTime(width, /*timeMin, timeMax*/d3.min(timeConcat), d3.max(timeConcat), startTime);
@@ -543,33 +496,15 @@ export class LineGraph extends Component<line_graph_props, line_graph_state> {
         
 
         // draw the time bar
-        // if(isZoom){ //zoomed graph 
-            svg.append("rect")
-                .attr("x", timeBarCurr -1)
-                .attr("y", 0)
-                .attr("width", 2)
-                .attr("height", height)
-                .attr("fill", "#b00")
-                .attr("fill-opacity","75%");
-        // } else{
-        //     svg.append("rect")
-        //         .attr("x", timeBarStart)
-        //         .attr("y", 0)
-        //         .attr("width", timeBarEnd - timeBarStart)
-        //         .attr("height", height)
-        //         .attr("fill", "#ff0")
-        //         .attr("fill-opacity","15%");     
-
-        //     svg.append("rect")
-        //         .attr("x", timeBarCurr -2)
-        //         .attr("y", 0)
-        //         .attr("width", 4)
-        //         .attr("height", height)
-        //         .attr("fill", "#b00")
-        //         .attr("fill-opacity","75%");
-        // }
-
-        
+        svg.append("rect")
+            .attr("x", timeBarCurr -1)
+            .attr("y", 0)
+            .attr("width", 2)
+            .attr("height", height)
+            .attr("fill", "#b00")
+            .attr("fill-opacity","75%");
+    
+        console.log("width: " + width + " height: " + height);
         // Add X axis and Y axis
         var x_axis: { (arg0: number): number; (arg0: number): number; domain: any; }; //type is generated by Typescript
         var y_axis: { (arg0: number): number; (arg0: number): number; domain: any; };
@@ -653,30 +588,8 @@ export class LineGraph extends Component<line_graph_props, line_graph_state> {
         }else{
             for(let i = 0; i < data.length; i++){
 
-                // let tooltip = d3.select(this._graphDiv.current)
-                //     .append("div")
-                //     .style("opacity", 0)
-                //     .attr("class", "tooltip")
-                //     .style("background-color", "white")
-                //     .style("border", "solid")
-                //     .style("border-width", "2px")
-                //     .style("border-radius", "5px")
-                //     .style("padding", "5px")
-                // let mouseover = function(d:MouseEvent)
-                // let valueLine;
                 id = line_ids[i];
-                //const id_content = id.split("&");
-                //const type = id_content[id_content.length-1];
-                // log(type);
-                // if(type === "position"){
-                //     log("ehre in position")
-                    
-                // }else{
-                //     valueLine = d3.line()
-                //         .curve(d3.curveBundle.beta(0.9)) //not very effective
-                //         .x((d:data_entry):number => { return x_axis(d.times); })
-                //         .y((d:data_entry):number => { return y_axis(d.vals); });
-                // }
+             
                 if(prev_map.get(id) !== -1 && prev_lines.has(id) 
                 && !boundChangeInZoom && !colorChange && !windowChanged 
             && !onGraphUpdate(false) && !lineWidthChanged){ //not new select and have previous line
@@ -734,284 +647,6 @@ export class LineGraph extends Component<line_graph_props, line_graph_state> {
           .attr("transform", "rotate(-90)")
           .text(yLab);
 
-
-        //draw legend
-        
-        // if (this.props.legend) {
-        //   // if(!isTimeWarp){
-        //     const legend_start_x = 0;
-        //     const legend_start_y = h;
-        //   svg
-        //     .append("rect")
-        //     .attr("x", legend_start_x)
-        //     .attr("y", legend_start_y)
-        //     .attr("width", legendW)
-        //     .attr("height",50 * (line_names.length + 1) + 35)
-        //     .attr("stroke", "#ccc")
-        //     .attr("fill-opacity", "75%");
-        //   svg
-        //     .append("text")
-        //     // .attr("class", "x label")
-        //     .attr("fill", "white")
-        //     .attr("text-anchor", "middle")
-        //     .attr("x", legend_start_x + legendW / 2)
-        //     .attr("y", 30 + legend_start_y)
-        //     .style("font-weight", 600)
-        //     .style("font-size", "16px")
-        //     .text("Legend");
-        //   let legend_y = 35 + legend_start_y;
-
-        //   // Create right-click context menu
-
-        //   const contextMenu = svg
-        //     .append("g")
-        //     .attr("class", "context-menu")
-        //     .style("display", "none");
-
-        //   document.addEventListener("click", () => {
-        //     // Hide the context menu
-        //     contextMenu.style("display", "none");
-        //   });
-
-        //   const option_width = 80,  // the width and height of an right-click menu option
-        //     option_height = 20;
-        //   const start_x = -70,  // the offset of the option
-        //     start_y = -15;
-        //   const option1 = contextMenu
-        //     .append("g") // Create a group element
-        //     .attr("class", "option")
-        //     .attr("transform", `translate(${start_x},${start_y})`)
-        //     .style("cursor", "pointer")
-        //     .on("click", () => {
-        //       // Option 1 click handler
-        //       console.log("Option 1 clicked");
-        //     });
-
-        //   option1
-        //     .append("rect")
-        //     .attr("width", option_width)
-        //     .attr("height", option_height)
-        //     .attr("fill", "white");
-
-        //   option1
-        //     .append("text")
-        //     .attr("x", option_width / 2)
-        //     .attr("y", option_height / 2)
-        //     .attr("text-anchor", "middle")
-        //     .attr("dominant-baseline", "central")
-        //     .style("font-size", "12px")
-        //     .style("fill", "black")
-        //     .text("Select as line1");
-
-        //   const option2 = contextMenu
-        //     .append("g") // Create a group element
-        //     .attr("class", "option")
-        //     .attr(
-        //       "transform",
-        //       `translate(${start_x},${start_y + option_height})`
-        //     )
-        //     .style("cursor", "pointer")
-        //     .on("click", () => {
-        //       // Option 2 click handler
-        //       console.log("Option 2 clicked");
-        //     });
-
-        //   option2
-        //     .append("rect")
-        //     .attr("width", option_width)
-        //     .attr("height", option_height)
-        //     .attr("fill", "white");
-
-        //   option2
-        //     .append("text")
-        //     .attr("x", option_width / 2)
-        //     .attr("y", option_height / 2)
-        //     .attr("text-anchor", "middle")
-        //     .attr("dominant-baseline", "central")
-        //     .style("font-size", "12px")
-        //     .style("fill", "black")
-        //     .text("Select as line2");
-
-        //   const radius = 8; // radius of the circle
-        //   const xSize = 6; // the size of the "X"
-        //   legend_y += 22;
-        //   for (let i = 0; i < line_names.length; i++) {
-            
-        //     svg
-        //       .append("circle")
-        //       // .attr("class", "x label")
-        //       .attr("fill", line_colors[i])
-        //       .attr("cx", legend_start_x + 15)
-        //       .attr("cy", legend_y - 4)
-        //       .attr("r", radius);
-
-        //     let line_name = line_names[i];
-
-        //     if (!isDiff && !isTimeWarp) {
-        //       // draw "X". Whenever the user clicks it, it remove the current line in the graph
-        //       const x_offset = 0.99 * legendW - 2 * xSize; //272
-        //       const line1 = svg
-        //         .append("line")
-        //         .attr("x1", legend_start_x + x_offset)
-        //         .attr("y1", legend_y - 4 - xSize)
-        //         .attr("x2", legend_start_x + x_offset + 2 * xSize)
-        //         .attr("y2", legend_y - 4 + xSize)
-        //         .attr("stroke", "red")
-        //         .attr("stroke-width", 2)
-        //         .style("cursor", "pointer")
-        //         .on("click", this.createOnClickHandler(line_ids[i]));
-
-        //       const line2 = svg
-        //         .append("line")
-        //         .attr("x1", legend_start_x + x_offset)
-        //         .attr("y1", legend_y - 4 + xSize)
-        //         .attr("x2", legend_start_x + x_offset + 2 * xSize)
-        //         .attr("y2", legend_y - 4 - xSize)
-        //         .attr("stroke", "red")
-        //         .attr("stroke-width", 2)
-        //         .style("cursor", "pointer")
-        //         .on("click", this.createOnClickHandler(line_ids[i]));
-        //     }
-            
-
-        //       const c_length = 6.8; // the length of a single character
-        //       const line_width = 0.9 * legendW - 2 * xSize - 2 * radius;
-        //       const line_counts = Math.ceil(line_name.length * c_length / line_width);
-        //       const line_height = line_counts * 20;
-        //       console.log("line count: " + line_counts)
-        //       console.log("line height: " + line_height)
-        //       const foreignObject = svg
-        //         .append("foreignObject")
-        //         .attr("x", legend_start_x + 25)
-        //         .attr("y", legend_y - radius * 2)
-        //         .attr("width", line_width) // Set the maximum width for text wrapping
-        //         .attr("height", line_height);
-        //         // Set the height of the foreignObject
-        //         ((line: string) => {
-        //           const div = foreignObject
-        //             .append("xhtml:div")
-        //             .style("font-weight", 600)
-        //             .style("font-size", "13px")
-        //             .style("max-width", "100%")
-        //             .style("color", line_colors[i]) // Set the text color
-        //             .html(
-        //               `<p style="word-wrap: break-word; margin: 0;">${line_name}</p>`
-        //             );
-
-        //           div.on("contextmenu", (event: MouseEvent) => {
-        //             // Prevent default right-click event
-        //             event.preventDefault();
-
-        //             const svgElement = svg.node();
-        //             const svgRect = svgElement.getBoundingClientRect();
-
-        //             // Get the adjusted mouse coordinates relative to the SVG element
-        //             const mouseX = event.pageX - svgRect.left;
-        //             const mouseY = event.pageY - svgRect.top;
-
-        //             //   console.log(
-        //             //     "should be x: " +
-        //             //       (legend_start_x + 25) +
-        //             //       " y: " +
-        //             //       legend_y
-        //             //   );
-        //             //   console.log("x: " + mouseX + " y: " + mouseY);
-
-        //             // Position the context menu at the mouse coordinates
-        //             contextMenu.attr(
-        //               "transform",
-        //               `translate(${mouseX}, ${mouseY})`
-        //             );
-
-        //             // Show the context menu
-        //             contextMenu.style("display", "block");
-        //             option1.on("click", () => {
-        //               // Option 1 click handler
-        //               if (this.props.onSelectLine)
-        //                 this.props.onSelectLine(line, 0);
-        //             });
-
-        //             option2.on("click", () => {
-        //               // Option 2 click handler
-        //               if (this.props.onSelectLine)
-        //                 this.props.onSelectLine(line, 1);
-        //             });
-
-        //             // Move the context menu container to the end of the SVG element's children
-        //             svg.node().appendChild(contextMenu.node());
-        //           });
-        //         }
-        //       )(line_ids[i]);
-              
-              
-        //      legend_y += line_height;
-        //     // add line names
-        //    /* while (line_name.length > 0) {
-        //       ((line: string) => {
-        //         svg
-        //           .append("text")
-        //           // .attr("class", "x label")
-        //           .attr("fill", line_colors[i])
-        //           .attr("text-anchor", "start")
-        //           .attr("x", legend_start_x + 25)
-        //           .attr("y", legend_y)
-        //           .style("font-weight", 600)
-        //           .style("font-size", "13px")
-        //           .text(line_name.substring(0, 31))
-        //           .on("contextmenu", (event: MouseEvent) => {
-        //             // Prevent default right-click event
-        //             event.preventDefault();
-
-        //             const svgElement = svg.node();
-        //             const svgRect = svgElement.getBoundingClientRect();
-
-        //             // Get the adjusted mouse coordinates relative to the SVG element
-        //             const mouseX = event.pageX - svgRect.left;
-        //             const mouseY = event.pageY - svgRect.top;
-
-        //             //   console.log(
-        //             //     "should be x: " +
-        //             //       (legend_start_x + 25) +
-        //             //       " y: " +
-        //             //       legend_y
-        //             //   );
-        //             //   console.log("x: " + mouseX + " y: " + mouseY);
-
-        //             // Position the context menu at the mouse coordinates
-        //             contextMenu.attr(
-        //               "transform",
-        //               `translate(${mouseX}, ${mouseY})`
-        //             );
-
-        //             // Show the context menu
-        //             contextMenu.style("display", "block");
-        //             option1.on("click", () => {
-        //               // Option 1 click handler
-        //               if(this.props.onSelectLine)
-        //                 this.props.onSelectLine(line, 0);
-        //             });
-
-        //             option2.on("click", () => {
-        //               // Option 2 click handler
-        //               if(this.props.onSelectLine)
-        //                 this.props.onSelectLine(line, 1);
-        //             });
-                  
-
-        //         // Move the context menu container to the end of the SVG element's children
-        //         svg.node().appendChild(contextMenu.node());
-        //       })
-        //     })(line_ids[i]);
-        //       line_name = line_name.substring(31);
-        //       legend_y += 16;
-        //     }*/
-
-        //     //legend_y -= 16;
-        //   }
-        // }
-        
-        
-
         //add draggable components(just rectangles)
         svg.append("rect")
                 .attr("x", timeBarCurr -20)
@@ -1022,27 +657,8 @@ export class LineGraph extends Component<line_graph_props, line_graph_state> {
                 .attr("fill-opacity","0%")
                 .call(dragC);
             
-        // svg.append("rect")
-        //     .attr("x", timeBarStart)
-        //     .attr("y", 0)
-        //     .attr("width", 30)
-        //     .attr("height", height)
-        //     .attr("fill", "#ff0")
-        //     .attr("fill-opacity","0%")
-        //     .call(dragS);
-
-        // svg.append("rect")
-        //     .attr("x", timeBarEnd-30)
-        //     .attr("y", 0)
-        //     .attr("width", 30) 
-        //     .attr("height", height)
-        //     .attr("fill", "#ff0")
-        //     .attr("fill-opacity","0%")
-        //     .call(dragE);
-
-        
         this.setState({
-            // w: width + margin.left + margin.right,
+            // w: width + margin.lthis.stateeft + margin.right,
             // h: height + margin.top + margin.bottom,
             prev_lines: prev_lines,
             prev_x: x_axis,
@@ -1052,13 +668,6 @@ export class LineGraph extends Component<line_graph_props, line_graph_state> {
             time_min: d3.min(timeConcat), 
             time_max: d3.max(timeConcat),
         });
-        // this._graphDiv.current!.appendChild(svg.node());
-        // let temp = d3.select(this._graphDiv.current).append("svg")
-        //     .attr("width", width + margin.left + margin.right)
-        //     .attr("height", height + margin.top + margin.bottom)
-        //     .append(svg)
-        // this._graphDiv.current!.appendChild(temp);
-        // log(svg.node());
         onGraphUpdate(true);
         return svg.node();
         
