@@ -32,6 +32,7 @@ let exampleRobotURLs = [
     {"robot_name": "ur5", "url": "https://raw.githubusercontent.com/uwgraphics/MotionComparator-Examples/main/robots/ur5/urdf/ur5_gripper.urdf"},
     {"robot_name": "spot arm", "url" : "https://raw.githubusercontent.com/uwgraphics/MotionComparator-Examples/main/robots/spot_arm/urdf/spot_arm.urdf"},
     {"robot_name": "panda", "url": "https://raw.githubusercontent.com/uwgraphics/MotionComparator-Examples/main/robots/panda/urdf/panda.urdf"},
+    {"robot_name": "iiwa", "url": "http://raw.githubusercontent.com/uwgraphics/MotionComparator-Examples/main/robots/iiwa/urdf/iiwa.urdf"},
     {"robot_name": "bottle", "url": "https://raw.githubusercontent.com/uwgraphics/MotionComparator-Examples/main/objects/glass_bottle.glb"},
     {"robot_name": "table", "url": "https://raw.githubusercontent.com/uwgraphics/MotionComparator-Examples/main/objects/side_table.glb"},
     {"robot_name": "end-effector targets", "url": "EETarget"}
