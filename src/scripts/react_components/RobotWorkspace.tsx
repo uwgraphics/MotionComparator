@@ -504,6 +504,13 @@ export class RobotWorkspace extends Component<robot_workspace_props, robot_works
                             </div>
                         </div>
 
+                        <div className={"ExampleImageGroup"}>
+                            <img src="https://raw.githubusercontent.com/uwgraphics/MotionComparator-Examples/main/workspaces/ur5_rangedik/ur5_rangedik.png" className={"ExampleImage"} alt="Trajectory Tracking" />
+                            <div className={"ExampleImageOverlay"} onClick={() => this.onClickImage("https://raw.githubusercontent.com/uwgraphics/MotionComparator-Examples/main/workspaces/ur5_rangedik/ur5_rangedik.json")}>
+                                <div className={"ExampleImageOverlayText"}>Trajectory Tracking of UR5 Robot </div>
+                            </div>
+                        </div>
+
                         <br></br>
                         <br></br>
 
