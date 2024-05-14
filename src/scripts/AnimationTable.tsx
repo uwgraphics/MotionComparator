@@ -834,7 +834,7 @@ export class AnimationTable {
                 } else {
                     // Value row
                     for (const [, vals] of cols) {
-                        let val = vals[rowNum];
+                        let val = vals[rowNum-1];
                         if (val === undefined) {
                             val = vals[vals.length - 1];
                             if (val === undefined) {
