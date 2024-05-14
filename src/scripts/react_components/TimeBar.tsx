@@ -612,6 +612,74 @@ export class TimeBar extends Component<time_bar_props, time_bar_state> {
         }
     }
 
+    renderStartBar(){
+        const currLoc = this.getCurrLoc();
+        let x=(currLoc.start + 4.5)+'px';
+        let y=TimeBar.defaultProps.drag_bar_y+'px';
+        let size = TimeBar.defaultProps.drag_bar_height;
+        let width = 3 * size / 8;
+        let points = `${width},${size} 0,${size / 2} ${width},0`;
+
+        return (
+            <svg x={x} y={y} width={size + 'px'} height={size + 'px'} viewBox={`0 0 ${size} ${size}`} xmlns="http://www.w3.org/2000/svg"
+                onMouseDown={e => {
+                    // Record our starting point.
+                    this.setState({
+                        dragStart: true,
+                        mouseXCoord: e.pageX
+                    });
+                    this.attachDragEndListener();
+                }}>
+                <polygon points={points} fill={'#999'} />
+            </svg>
+        );
+    }
+
+    renderEndBar(){
+        const currLoc = this.getCurrLoc();
+        let x=(currLoc.end + TimeBar.defaultProps.x)+'px';
+        let y=TimeBar.defaultProps.drag_bar_y+'px';
+        let size = TimeBar.defaultProps.drag_bar_height;
+        let width = 3 * size / 8;
+        let points = `0,${size} ${width},${size / 2} 0,0`;
+
+        return (
+            <svg x={x} y={y} width={size + 'px'} height={size + 'px'} viewBox={`0 0 ${size} ${size}`} xmlns="http://www.w3.org/2000/svg"
+                onMouseDown={e => {
+                    // Record our starting point.
+                    this.setState({
+                        dragEnd: true,
+                        mouseXCoord: e.pageX
+                    });
+                    this.attachDragEndListener();
+                }}>
+                <polygon points={points} fill={'#999'} />
+            </svg >
+        );
+    }
+
+    renderCurrBar(){
+        const currLoc = this.getCurrLoc();
+        let size = TimeBar.defaultProps.drag_bar_height;
+        let height = size / 2;
+        let points = `0,0 ${size/2},${height} ${size},0`;
+        let x=(currLoc.val + TimeBar.defaultProps.x - size/2)+'px';
+        let y=(TimeBar.defaultProps.drag_bar_y - height / 2)+'px';
+        return (
+            <svg x={x} y={y} width={size + 'px'} height={size + 'px'} viewBox={`0 0 ${size} ${size}`} xmlns="http://www.w3.org/2000/svg"
+                onMouseDown={e => {
+                    // Record our starting point.
+                    this.setState({
+                        dragValue: true,
+                        mouseXCoord: e.pageX
+                    }); 
+                    this.attachDragEndListener();
+                }}>
+                <polygon points={points} fill={'#555'} />
+            </svg >
+        );
+    }
+
     render() {
         //ToDO change svg style to center
         const currLoc = this.getCurrLoc();
@@ -637,7 +705,10 @@ export class TimeBar extends Component<time_bar_props, time_bar_state> {
                         {this.renderBackground()}
                         {this.renderSelectedInterval()}
                         {this.renderValueInterval()}
-                        <rect 
+                        {this.renderStartBar()}
+                        {this.renderEndBar()}
+                        {this.renderCurrBar()}
+                        {/* <rect 
                             fill={'#999'} 
                             x={(currLoc.start + 4.5)+'px'} 
                             y={TimeBar.defaultProps.drag_bar_y+'px'} 
@@ -650,9 +721,9 @@ export class TimeBar extends Component<time_bar_props, time_bar_state> {
                                     mouseXCoord: e.pageX
                                 }); 
                                 this.attachDragEndListener();
-                            }}/>
+                            }}/> */}
 
-                        <rect 
+                        {/* <rect 
                             fill={'#999'} 
                             x={(currLoc.end+TimeBar.defaultProps.x)+'px'} 
                             y={TimeBar.defaultProps.drag_bar_y+'px'} 
@@ -665,8 +736,8 @@ export class TimeBar extends Component<time_bar_props, time_bar_state> {
                                     mouseXCoord: e.pageX
                                 }); 
                                 this.attachDragEndListener();
-                            }}/>
-                        <rect 
+                            }}/> */}
+                        {/* <rect 
                             fill={'#555'} 
                             x={(currLoc.val+TimeBar.defaultProps.x)+'px'} 
                             y={TimeBar.defaultProps.drag_bar_y+'px'} 
@@ -679,7 +750,7 @@ export class TimeBar extends Component<time_bar_props, time_bar_state> {
                                     mouseXCoord: e.pageX
                                 }); 
                                 this.attachDragEndListener();
-                            }}/>
+                            }}/> */}
 
 
                     </svg>
