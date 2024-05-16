@@ -32,7 +32,7 @@ export class QuaternionSpaceCanvas extends Component<quaternion_canvas_props, qu
 
     protected _pointer: T.Mesh;
 
-    protected _syncViewCallback?: CameraViewpointCallback;
+    //protected _syncViewCallback?: CameraViewpointCallback;
 
     constructor(props:quaternion_canvas_props) {
         super(props);
@@ -159,10 +159,10 @@ export class QuaternionSpaceCanvas extends Component<quaternion_canvas_props, qu
             let origUpdate = controls.update.bind(controls); // bind `this` because we will put the origional function in a function with a different value assigned to `this`
             controls.update = (() => {
                 let result = origUpdate(); // run the origional update function
-                this.props.robotSceneManager.setCurrSyncViewpoint([
-                        this._orbitCamera.getWorldPosition(new T.Vector3()),
-                        new T.Quaternion().setFromEuler(this._orbitCamera.rotation)
-                ]);
+                // this.props.robotSceneManager.setCurrSyncViewpoint([
+                //         this._orbitCamera.getWorldPosition(new T.Vector3()),
+                //         new T.Quaternion().setFromEuler(this._orbitCamera.rotation)
+                // ]);
                 quaternionSpaceScene.render(); // Tell RobotScene that it needs to rerender because the camera's position changed
                 return result;
             });
@@ -173,16 +173,16 @@ export class QuaternionSpaceCanvas extends Component<quaternion_canvas_props, qu
             controls.update();
 
             // Syncing Camera Veiwpoints
-            if (this._syncViewCallback) {
-                this.props.robotSceneManager.removeSyncViewCallback(this._syncViewCallback);
-                this._syncViewCallback = undefined;
-            }
-            this._syncViewCallback = ((cv) => {
-                let [newPos, newRot] = cv;
-                this._orbitCamera.position.copy(newPos);
-                this._orbitCamera.rotation.setFromQuaternion(newRot);
-                this.props.quaternionSpaceScene.render();
-            });
+            // if (this._syncViewCallback) {
+            //     this.props.robotSceneManager.removeSyncViewCallback(this._syncViewCallback);
+            //     this._syncViewCallback = undefined;
+            // }
+            // this._syncViewCallback = ((cv) => {
+            //     let [newPos, newRot] = cv;
+            //     this._orbitCamera.position.copy(newPos);
+            //     this._orbitCamera.rotation.setFromQuaternion(newRot);
+            //     this.props.quaternionSpaceScene.render();
+            // });
             // this.props.robotSceneManager.addSyncViewCallback(this._syncViewCallback);
 
             // The SceneView is re-rendered automatically by the RobotScene
@@ -226,10 +226,10 @@ export class QuaternionSpaceCanvas extends Component<quaternion_canvas_props, qu
     unmount(quaternionSpaceScene:QuaternionSpaceScene, canvas?:HTMLCanvasElement | null) {
 
         // Remove camera syncing
-        if (this._syncViewCallback) {
-            this.props.robotSceneManager.removeSyncViewCallback(this._syncViewCallback);
-            this._syncViewCallback = undefined;
-        }
+        // if (this._syncViewCallback) {
+        //     this.props.robotSceneManager.removeSyncViewCallback(this._syncViewCallback);
+        //     this._syncViewCallback = undefined;
+        // }
 
         // Remove orbit view (so that it no longer is rendered to by the robot scene)
         if (this._orbitView) {
