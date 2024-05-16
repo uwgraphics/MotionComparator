@@ -393,7 +393,8 @@ export class RobotWorkspace extends Component<robot_workspace_props, robot_works
                                             // { id: EDIT_ANIMATIONS_TAB, },
                                             // { id: TIME_WARP_TAB, },
                                             // { id: GHOST_TAB, },
-                                        ]
+                                        ],
+
                                     },
                                     {
                                         size: 250,
@@ -585,6 +586,7 @@ export class RobotWorkspace extends Component<robot_workspace_props, robot_works
             return {
                 id: LOAD_N_SAVE_TAB,
                 title: LOAD_N_SAVE_TAB,
+                group: "OptionPanels",
                 content: (
                     <WorkspaceContext.Consumer>
                         {(ctx:ReactContextT) => {
@@ -612,7 +614,7 @@ export class RobotWorkspace extends Component<robot_workspace_props, robot_works
             return {
                 id: GRAPH_OPTIONS_TAB,
                 title: GRAPH_OPTIONS_TAB,
-                
+                group: "OptionPanels",
                 content: (
                     <WorkspaceContext.Consumer>
                         {(ctx:ReactContextT) => {
@@ -635,7 +637,7 @@ export class RobotWorkspace extends Component<robot_workspace_props, robot_works
             return {
                 id: SCENE_OPTIONS_TAB,
                 title: SCENE_OPTIONS_TAB,
-                
+                group: "OptionPanels",
                 content: (
                     <WorkspaceContext.Consumer>
                         {(ctx:ReactContextT) => {
@@ -659,7 +661,7 @@ export class RobotWorkspace extends Component<robot_workspace_props, robot_works
             return {
                 id: ROBOT_OPTIONS_TAB,
                 title: ROBOT_OPTIONS_TAB,
-                
+                group: "OptionPanels",
                 content: (
                     <WorkspaceContext.Consumer>
                         {(ctx:ReactContextT) => {
@@ -681,7 +683,7 @@ export class RobotWorkspace extends Component<robot_workspace_props, robot_works
             return {
                 id: QUATERNION_OPTIONS_TAB,
                 title: QUATERNION_OPTIONS_TAB,
-                
+                group: "OptionPanels",
                 content: (
                     <WorkspaceContext.Consumer>
                         {(ctx:ReactContextT) => {
@@ -703,7 +705,7 @@ export class RobotWorkspace extends Component<robot_workspace_props, robot_works
             return {
                 id: UMAP_GRAPH_OPTIONS_TAB,
                 title: UMAP_GRAPH_OPTIONS_TAB,
-                
+                group: "OptionPanels",
                 content: (
                     <WorkspaceContext.Consumer>
                         {(ctx:ReactContextT) => {
@@ -1312,6 +1314,13 @@ export class RobotWorkspace extends Component<robot_workspace_props, robot_works
                         layout={ this.state.layoutBase }
                         onLayoutChange={this.onLayoutChange}
                         loadTab={this.tabWrap(this.loadTab)}
+                        groups={{
+                            OptionPanels:{
+                                // floatable: true,
+                                // disableDock: true,
+                                tabLocked: true,
+                            }
+                        }}
                     />
                 </WorkspaceContext.Provider>
             </div>
