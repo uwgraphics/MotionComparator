@@ -809,6 +809,7 @@ export class Robot {
      */
     traverseMaterials(callback:(mat:T.Material) => void) {
         this.rootGroup().traverse((obj) => {
+                if(obj instanceof T.AxesHelper) return;
                 recurseMaterialTraverse(
                     // @ts-ignore
                     obj.material,

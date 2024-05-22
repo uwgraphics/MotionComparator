@@ -4,7 +4,7 @@ import { URDFJoint } from "urdf-loader";
 import { APP } from "../constants";
 import { Id } from "../Id";
 import { Robot } from "./Robot";
-
+import T from '../true_three';
 
 /**
  * Wrapper around a Robot's joint so that it can tell it's owner Robot when it
@@ -14,6 +14,7 @@ export class RobotJoint {
     protected _id: Id;
     protected _robot: Robot; // parent Robot object to whom this joint belongs.
     protected _joint: URDFJoint;
+    protected _axisHelper: T.AxesHelper;
     protected _render: () => void; // callback for notifying the Robot that it was changed so it needs to rerender
 
     protected _includeAngleInTimeWarpConsideration: boolean;
@@ -30,6 +31,11 @@ export class RobotJoint {
         this._id = new Id();
         this._robot = robot;
         this._joint = joint;
+
+        this._axisHelper = new T.AxesHelper(0.1);
+        this._axisHelper.visible = false;
+        this._joint.add(this._axisHelper)
+
         this._render = render;
 
         this._includeAngleInTimeWarpConsideration = false;
@@ -37,6 +43,12 @@ export class RobotJoint {
 
         this._sceneCounter = 0;
         this._graphCounter = 0;
+    }
+
+    setAxisVisibility(visible: boolean){
+        this._axisHelper.visible = visible;
+        APP.updateUI();
+        APP.render();
     }
 
     isInScene()
