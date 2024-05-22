@@ -13,6 +13,7 @@ export class RobotLink {
     protected _id: Id;
     protected _robot: Robot; // parent Robot object to whom this link belongs.
     protected _link: URDFLink;
+    protected _axisHelper: T.AxesHelper;
     protected _render: () => void; // callback for notifying the Robot that it was changed so it needs to rerender
 
     protected _includePosInTimeWarpConsideration: boolean;
@@ -28,12 +29,24 @@ export class RobotLink {
         this._id = new Id();
         this._robot = robot;
         this._link = link;
+
+        
+        this._axisHelper = new T.AxesHelper(0.1);
+        this._axisHelper.visible = false;
+        this._link.add(this._axisHelper)
+
         this._render = render;
 
         this._includePosInTimeWarpConsideration = false;
 
         this._sceneCounter = 0;
         this._graphCounter = 0;
+    }
+
+    setAxisVisibility(visible: boolean){
+        this._axisHelper.visible = visible;
+        APP.updateUI();
+        APP.render();
     }
 
     isInScene()

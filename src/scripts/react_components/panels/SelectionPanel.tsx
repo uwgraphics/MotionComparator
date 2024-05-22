@@ -20,6 +20,8 @@ import { faQuestion } from '@fortawesome/free-solid-svg-icons';
 import { APP } from "../../constants";
 import { PopupHelpPage } from "../popup_help_page";
 import { Id } from "../../Id";
+import { RobotLink } from "../../objects3D/RobotLink";
+import { RobotJoint } from "../../objects3D/RobotJoint";
 
 export interface selection_panel_props {
     getParentDockLayout: () => DockLayout | undefined,
@@ -280,10 +282,34 @@ export class SelectionPanel extends Component<
               id={scene.id().value() + "#" + robotPart.value}
               draggable="true"
               onDragStart={this.dragStartHandler}
+              onMouseEnter={(event) => {this.displayAxis(event, true);}}
+              onMouseLeave={(event) => {this.displayAxis(event, false);}}
             >
               {robotPart.label}
             </button>
           </div>
+  }
+
+  /**
+   * display or hide the axis of a particular robot part
+   * @param event 
+   * @param display 
+   * @returns 
+   */
+  displayAxis(event: any, display: boolean){
+    const {robotSceneManager} = this.props;
+    let [sceneId, targetName] = event.target.id.split("#");
+    let scene = robotSceneManager.robotSceneById(sceneId);
+    if(scene === undefined) return;
+    let [robotName, robotPartName] = targetName.split("&");
+    let robot = scene.getRobotByName(robotName);
+    if(robot === undefined) return;
+    let robotPart: RobotJoint | RobotLink | undefined = robot.jointMap().get(robotPartName);
+    if(robotPart === undefined){
+      robotPart = robot.linkMap().get(robotPartName);
+      if(robotPart === undefined) return;
+    }
+    robotPart.setAxisVisibility(display);
   }
 
 
