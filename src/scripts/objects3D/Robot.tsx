@@ -101,6 +101,8 @@ export class Robot {
     protected _links: RobotLink[];
     protected _linkMap: Map<string, RobotLink>;
 
+    protected _axisSize: number;
+
     protected _master?: Robot; // The Robot that spawned this Robot, undefined if this Robot is the master Robot in the RobotSceneManager
 
     // A clone of this Robot that is controlled by this Robot (the clone is
@@ -123,6 +125,8 @@ export class Robot {
      * @param id The id of the Robot. (for serialization)
      */
     constructor(urdfRobot:URDFRobot | T.Object3D, url?:string, name?:string, id?:string, objectType:'urdf' | 'object3D'='urdf', master?:Robot) {
+        this._axisSize = 0.1;
+
         this._robot = urdfRobot;
         this._objectType = objectType;
         this._id = new Id(id);
@@ -283,6 +287,18 @@ export class Robot {
 
         this._includePositionOffsetInTimeWarpConsideration = false;
         this._includePosInTimeWarpConsideration = false;
+    }
+
+    setAxisSize(size: number){
+        this._axisSize = size;
+        for(const [, joint] of this._jointMap)
+            joint.updateAxisSize(size);
+        for(const [, link] of this._linkMap)
+            link.updateAxisSize(size);
+    }
+
+    axisSize(): number {
+        return this._axisSize;
     }
 
     eulerRotation(): T.Euler{

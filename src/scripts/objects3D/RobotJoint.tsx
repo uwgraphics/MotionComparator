@@ -51,6 +51,16 @@ export class RobotJoint {
         APP.render();
     }
 
+    updateAxisSize(size: number){
+        let visible = this._axisHelper.visible;
+        this._joint.remove(this._axisHelper);
+        this._axisHelper = new T.AxesHelper(size);
+        this._joint.add(this._axisHelper);
+        this._axisHelper.visible = visible;
+        APP.updateUI();
+        APP.render();
+    }
+
     isInScene()
     {
         return this._sceneCounter !== 0;
