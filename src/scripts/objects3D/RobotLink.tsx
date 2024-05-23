@@ -49,6 +49,16 @@ export class RobotLink {
         APP.render();
     }
 
+    updateAxisSize(size: number){
+        let visible = this._axisHelper.visible;
+        this._link.remove(this._axisHelper);
+        this._axisHelper = new T.AxesHelper(size);
+        this._link.add(this._axisHelper);
+        this._axisHelper.visible = visible;
+        APP.updateUI();
+        APP.render();
+    }
+
     isInScene()
     {
         return this._sceneCounter !== 0;

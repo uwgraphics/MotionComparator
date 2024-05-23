@@ -328,6 +328,18 @@ export class RobotOptionsPanel extends Component<robot_options_panel_props, robo
       }
     }
 
+    onAxisSizeChange(): (newValue:number) => void  {
+      return (newValue:number) => {
+        const { robotSceneManager } = this.props;
+        const currScene = robotSceneManager.currRobotScene();
+        if (currScene === undefined) return;
+        const currRobot = currScene.selectedRobot();
+        if (currRobot === undefined) return;
+        currRobot.setAxisSize(newValue);
+        this.forceUpdate(); // forces rerender so that the label above the slider can update
+      }
+    }
+
     onShowData()
     {
       this.setState({
@@ -409,6 +421,15 @@ export class RobotOptionsPanel extends Component<robot_options_panel_props, robo
                           value={opacity}
                           onChange={this.onOpacityChange()}
                           key={"Robot Opacity"}
+                        />
+                        <LabeledSlider
+                          label={"Axis Size"}
+                          min={0.01}
+                          step={0.01}
+                          max={1}
+                          value={currRobot.axisSize()}
+                          onChange={this.onAxisSizeChange()}
+                          key={"Axis Size"}
                         />
                       </div>
                     </div>
