@@ -5,20 +5,20 @@
     <a href= "https://uwgraphics.github.io/MotionComparator"><img alt="status: online" src="https://img.shields.io/badge/status-online-success.svg?logoHeight=10"></a>
     <a href= "https://uwgraphics.github.io/MotionComparator"><img alt="demo: ready" src="https://img.shields.io/badge/demo-ready-success.svg?logoHeight=10"></a>
     <a href= "https://github.com/uwgraphics/MotionComparator/releases"><img alt="docs: ready" src="https://img.shields.io/badge/version-v0.80.0 Beta-blue.svg?logoHeight=10"></a>
-  
-  
 </div>
 
-Motion Comparator is an web-based application to visualize, compare, and share robot motions. 
+Motion Comparator is a web-based application to visualize, compare, and share robot motions. 
 
 ## Installation
 We recommend using the [hosted version of Motion Comparator](https://uwgraphics.github.io/MotionComparator/). 
 
-If you would like to play around with the code, the dependencies of Motion Comparator can be isntalled by:
+If you would like to play around with the code, the dependencies of Motion Comparator can be installed by:
 ```
 npm install
 npm start
 ```
+
+[MotionComparator-Examples](https://github.com/uwgraphics/MotionComparator-Examples) contains the robot URDFs and object models used in the examples.
 
 ## Contributing
 
