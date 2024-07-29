@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/MotionComparator/static/css/main.a73f2481.css",
-    "main.js": "/MotionComparator/static/js/main.d72a8a07.js",
-    "static/js/787.9064070b.chunk.js": "/MotionComparator/static/js/787.9064070b.chunk.js",
+    "main.css": "/MotionComparator/static/css/main.95c0751b.css",
+    "main.js": "/MotionComparator/static/js/main.1b105c30.js",
+    "static/js/453.68e97868.chunk.js": "/MotionComparator/static/js/453.68e97868.chunk.js",
     "index.html": "/MotionComparator/index.html",
-    "main.a73f2481.css.map": "/MotionComparator/static/css/main.a73f2481.css.map",
-    "main.d72a8a07.js.map": "/MotionComparator/static/js/main.d72a8a07.js.map",
-    "787.9064070b.chunk.js.map": "/MotionComparator/static/js/787.9064070b.chunk.js.map"
+    "main.95c0751b.css.map": "/MotionComparator/static/css/main.95c0751b.css.map",
+    "main.1b105c30.js.map": "/MotionComparator/static/js/main.1b105c30.js.map",
+    "453.68e97868.chunk.js.map": "/MotionComparator/static/js/453.68e97868.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.a73f2481.css",
-    "static/js/main.d72a8a07.js"
+    "static/css/main.95c0751b.css",
+    "static/js/main.1b105c30.js"
   ]
 }
