@@ -14,6 +14,9 @@ We recommend using the [hosted version of Motion Comparator](https://uwgraphics.
 
 If you would like to play around with the code, the dependencies of Motion Comparator can be installed by:
 ```
+cd MotionComparator
+git submodule init
+git submodule update
 npm install
 npm start
 ```
