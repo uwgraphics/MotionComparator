@@ -1,4 +1,4 @@
-![Motion Comparator](./public/teaser.jpg)
+
 
 <div align="center">
     <h1>Motion Comparator</h1>
@@ -8,6 +8,9 @@
 </div>
 
 Motion Comparator is a web-based application to visualize, compare, and share robot motions. For more details, please refer to our [RA-L paper](https://arxiv.org/pdf/2407.02746).
+
+
+![Motion Comparator](./public/teaser.png)
 
 ## Installation
 We recommend using the [hosted version of Motion Comparator](https://uwgraphics.github.io/MotionComparator/). 
